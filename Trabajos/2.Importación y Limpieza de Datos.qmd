@@ -1,0 +1,137 @@
+---
+title: "Practica 02 PC 01"
+format: html
+editor: visual
+---
+
+## TRABAJO 02 DE SISTEMATIZACION Y METODOS ESTADISTICOS
+
+-   INTEGRANTES:
+    -   Avilés Magallanes, María Fernanda
+
+    -   Cassane Acevedo, Naomi Adriana
+
+    -   Dieguez Tasayco, Nallely Mirella
+
+    -   Medina Li, Margaret Belén
+
+    -   Moreyra Llancari, Diana Melisa
+
+    -   Quispe Berrocal Luigy
+
+    -   Wincho Rojas Omar
+
+## ANTES DE LA LIMPIEZA DE LA TABLA
+
+## Instalar Paquetes
+
+```{r}
+#PASO 1 INSTALAR PAQUETES SOLO SI NO ESTA INSTALADO
+
+install.packages("tidyverse")
+install.packages("rio")
+install.packages("here")
+install.packages("janitor")
+```
+
+```{r}
+#PASO 2 ACTIVAR PAQUETES OBLIGATORIO
+
+library(tidyverse)
+library(rio)
+library(here)
+library(janitor)
+```
+
+## Importar almac_sangre.csv usando el paquete rio
+
+```{r}
+almac_sangre = import(here("data", "almac_sangre.csv"))
+```
+
+# ANTES DE LA LIMPIEZA
+
+```{r}
+str(almac_sangre)
+```
+
+## LIMPIEZA DE LA TABLA
+
+## PASO 1: Correcion antes de corregir datos
+
+-   Corregir nombres de variables ponerlos en minuscula y usar guiones
+
+-   Colocar las celdas vacias en caso hubieran NA
+
+-   Eliminar columnas o filas vacias
+
+```{r}
+almac_sangre_1 = almac_sangre |> 
+  clean_names() |> 
+  mutate_if(is.character, list(~ na_if(., ""))) |> 
+  remove_empty(which = c("rows", "cols"))
+```
+
+## PASO 2: Corregir datos:
+
+-   Remplazar edad de números decimales a enteros
+
+-   Estandarizar no asignado por NA
+
+-   Estandarizar "SI"NO en todas las columnas.
+
+-   Remplazar tiempo de recurrencia decimales a enteros
+
+```{r}
+
+library(dplyr)
+
+# Crear almac_sangre_1 con todas las correcciones
+almac_sangre_2 <- almac_sangre |>
+  # Convertir edad de decimales a enteros (redondeando)
+  mutate(Edad = round(Edad)) |>
+  
+  # Estandarizar "No asignado" por NA en columnas de Gleason
+  mutate(across(
+    c(Gleason_biopsia, Gleason_quirurgico),
+    ~ case_when(
+      .x == "No asignado" ~ NA_character_,
+      TRUE ~ as.character(.x)
+    )
+  )) |>
+  
+  # Estandarizar "Sí"/"No" en todas las columnas categóricas binarias
+  mutate(across(
+    c(Raza_afroamericana, Historia_familiar, Confinamiento_organo, 
+      Terapia_previa, Terapia_adyuvante, Radioterapia_adyuvante, 
+      Recurrencia_bioquimica, Censor, BN_positivo),
+    ~ case_when(
+      .x %in% c("Sí", "Si", "SI", "sí", "si") ~ "SI",
+      .x %in% c("No", "NO", "no") ~ "NO",
+      TRUE ~ as.character(.x)
+    )
+  )) |>
+  
+  # Convertir tiempo de recurrencia de decimales a enteros (redondeando)
+  mutate(Tiempo_hasta_recurrencia = round(Tiempo_hasta_recurrencia))
+```
+
+# DESPUES DE LA LIMPIEZA
+
+Para verificar de una forma facil los cambios
+
+```{r}
+str(almac_sangre_2)
+```
+
+## EXPORTANDO DATA BASE LIMPIA
+
+Para exportar la data base almac_sangre_2 limpia
+
+```{r}
+# Exportar como CSV
+write.csv(almac_sangre_2, "almac_sangre_2.csv", row.names = FALSE, fileEncoding = "UTF-8")
+
+# Mensaje de confirmación
+cat("Base de datos exportada como: almac_sangre_2.csv")
+```

@@ -1,0 +1,162 @@
+---
+title: "practica 03 trabajo 01"
+format: html
+editor: visual
+---
+
+-   INTEGRANTES:
+-   Avilés Magallanes, María Fernanda
+-   Cassane Acevedo, Naomi Adriana
+-   Dieguez Tasayco, Nallely Mirella
+-   Medina Li, Margaret Belén
+-   Moreyra Llancari, Diana Melisa
+-   Quispe Berrocal Luigy
+-   Wincho Rojas Omar
+
+```{r}
+install.packages("broom.helpers")
+```
+
+```{r}
+library(tidyverse)
+library(here)
+library(rio)
+library(gtsummary)
+library(car)
+library(broom.helpers)
+```
+
+```{r}
+almac_sangre <- import(here("data", "almac_sangre.csv"))
+```
+
+# 1 Regresión logística binaria
+
+## 1.1 Preparación de los datos
+
+```{r}
+almac_sangre_1 <- almac_sangre |> 
+  mutate(Recurrencia_bioquimica = relevel(as.factor(Recurrencia_bioquimica), ref = "No"),
+         Raza_afroamericana = relevel(as.factor(Raza_afroamericana), ref = "No"),
+         Historia_familiar = relevel(as.factor(Historia_familiar), ref = "No"))
+```
+
+## 1.2 Regresión logística para predictor categórico
+
+```{r}
+regre_log <- glm(Recurrencia_bioquimica ~ Raza_afroamericana,
+                 family = binomial, 
+                 data = almac_sangre_1)
+
+summary(regre_log)
+```
+
+```{r}
+exp(coef(regre_log)[-1])
+```
+
+```{r}
+exp(confint(regre_log))[-1, , drop=F]
+```
+
+INTERPRETACION:
+
+-   **No hay asociación estadísticamente significativa** (p = 0.073 \> 0.05)
+
+-   **Odds Ratio de 1.89** - 89% más de probabilidades de recurrencia bioquímica en raza afroamericana
+
+-   **Intervalo de confianza incluye el 1** (0.92 a 3.72) - confirma falta de significancia
+
+-   **Tendencia no significativa** - posible asociación que podría deberse al azar
+
+-   **Resultado no concluyente** - se necesitaría mayor tamaño de muestra para confirmar
+
+## 1.3 Regresión logística para predictor numérico
+
+```{r}
+regre_log_1 <- glm(Recurrencia_bioquimica ~ Edad, family = binomial, data = almac_sangre_1)
+
+summary(regre_log_1)$coef
+```
+
+```{r}
+exp(coef(regre_log_1)[-1])
+```
+
+```{r}
+exp(confint(regre_log_1)[-1,])
+```
+
+INTERPRETACION
+
+-   **No hay asociación estadísticamente significativa** (p = 0.470 \> 0.05)
+
+-   **Odds Ratio de 1.015** - 1.5% más de probabilidades de recurrencia por cada año de edad
+
+-   **Intervalo de confianza incluye el 1** (0.975 a 1.059) - confirma falta de significancia
+
+-   **Asociación prácticamente nula** - el efecto es mínimo y no significativo
+
+-   **La edad no es predictor significativo** de recurrencia bioquímica en este análisis
+
+# 2 Regresión de Poisson
+
+## 2.1 El problema en este ejercicio
+
+Usando regresión de Poisson evaluaremos la relación entre el número de unidades transfundidas (variable Unidades_transfundidas) y diferentes predictores.
+
+## 2.2 Ajustamos modelos de regresión de Poisson
+
+Para la variable Raza_afroamericana
+
+```{r}
+reg_poisson1 = glm(Unidades_transfundidas ~ Raza_afroamericana, data = almac_sangre, family = "poisson")
+summary(reg_poisson1)
+```
+
+Para la variable Historia_familiar
+
+```{r}
+reg_poisson2 = glm(Unidades_transfundidas ~ Historia_familiar, data = almac_sangre, family = "poisson")
+summary(reg_poisson2)
+```
+
+Para la variable Edad
+
+```{r}
+reg_poisson3 = glm(Unidades_transfundidas ~ Edad, data = almac_sangre, family = "poisson")
+summary(reg_poisson3)
+```
+
+```{r}
+tabla_reg_poisson <- almac_sangre |>
+  tbl_uvregression(
+    include = c(Edad, Raza_afroamericana, Historia_familiar, PSA_preoperatorio),
+    y = Unidades_transfundidas,
+    method = glm,
+    method.args = list(family = poisson),
+    exponentiate = TRUE,
+    conf.int = TRUE,
+    hide_n = TRUE,
+    add_estimate_to_reference_rows = FALSE,
+    pvalue_fun = ~ style_pvalue(.x, digits = 3),
+    estimate_fun = ~ style_number(.x, digits = 2),
+    label = list(
+      Edad ~ "Edad (años)",
+      Raza_afroamericana ~ "Raza afroamericana",
+      Historia_familiar ~ "Historia familiar",
+      PSA_preoperatorio ~ "PSA preoperatorio"
+    )
+  ) |>
+  bold_labels() |>
+  bold_p(t = 0.05) |>
+  modify_header(estimate = "**IRR no ajustado**", p.value = "**Valor P**")
+```
+
+```{r}
+tabla_reg_poisson
+```
+
+INTERPRETACION
+
+No existe asociación estadísticamente significativa entre ninguna de las variables predictoras (edad, raza afroamericana, historia familiar, PSA preoperatorio) y el número de unidades transfundidas, ya que todos los intervalos de confianza incluyen el valor nulo (IRR = 1) y los valores p son mayores a 0.05. Si algún valor p fuera menor a 0.05, indicaría que existe una asociación estadísticamente significativa entre esa variable y las unidades transfundidas, pero en este caso todos los resultados son no significativos.

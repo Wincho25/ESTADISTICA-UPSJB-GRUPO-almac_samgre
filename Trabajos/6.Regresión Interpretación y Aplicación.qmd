@@ -1,0 +1,212 @@
+---
+title: "trabajo 03 almac sangre"
+format: html
+editor: visual
+---
+
+-   INTEGRANTES:
+    -   Avilés Magallanes, María Fernanda
+
+    -   Cassane Acevedo, Naomi Adriana
+
+    -   Dieguez Tasayco, Nallely Mirella
+
+    -   Medina Li, Margaret Belén
+
+    -   Moreyra Llancari, Diana Melisa
+
+    -   Quispe Berrocal Luigy
+
+    -   Wincho Rojas Omar
+
+```{r}
+# Cargar e instalar paquetes 
+install.packages("car") # Para la prueba de Levene
+```
+
+```{r}
+library(tidyverse)
+library(here)
+library(rio)
+library(gtsummary)
+library(car)
+```
+
+```{r}
+# Cargando los datos
+datos_sangre <- import(here("data", "almac_sangre_1.csv"))
+```
+
+## PRUEBAS DE BONDAD DE AJUSTE
+
+```{r}
+# Prueba de Shapiro-Wilk para normalidad del PSA preoperatorio
+datos_sangre |> 
+  summarise(shapiro = list(shapiro.test(PSA_preoperatorio))) |> 
+  pull(shapiro)
+```
+
+**Interpretación:**
+
+-   El valor p es menor que 0.05 (p \< 2.2e-16)
+
+-   **Conclusión:** Rechazamos la hipótesis nula de normalidad
+
+-   El PSA preoperatorio **NO sigue una distribución normal** en estos datos
+
+-   El valor W de 0.70044 está muy lejos de 1 (que indicaría normalidad perfecta)
+
+    \
+    Los niveles de PSA preoperatorio en esta población de pacientes tienen una distribución que se desvía significativamente de la normalidad, lo que sugiere que puede haber valores extremos o una distribución asimétrica.
+
+```{r}
+# Prueba de Shapiro-Wilk para normalidad del Volumen_prostata
+datos_sangre |> 
+  summarise(shapiro = list(shapiro.test(Volumen_prostata))) |> 
+  pull(shapiro)
+```
+
+**Interpretación:**
+
+-   El valor p es menor que 0.05 (p \< 2.2e-16)
+
+-   **Conclusión:** Rechazamos la hipótesis nula de normalidad
+
+-   El Volumen de próstata **NO sigue una distribución normal** en estos datos
+
+-   El valor W de 0.67965 está aún más lejos de 1 que el del PSA
+
+    \
+    El volumen prostático en esta población también presenta una distribución que se desvía significativamente de la normalidad. Esto es común en variables médicas donde pueden existir valores extremos (pacientes con volúmenes prostáticos muy grandes).
+
+```{r}
+# Prueba de Shapiro-Wilk para normalidad de la Edad
+datos_sangre |> 
+  summarise(shapiro = list(shapiro.test(Edad))) |> 
+  pull(shapiro)
+```
+
+**Interpretación:**
+
+-   El valor p es 0.03892, que es **ligeramente menor que 0.05**
+
+-   **Conclusión:** Rechazamos la hipótesis nula de normalidad
+
+-   La Edad **NO sigue estrictamente una distribución normal** en estos datos
+
+-   Sin embargo, el valor W de 0.99052 está muy cerca de 1, indicando que la distribución es casi normal
+
+    \
+    La edad de los pacientes presenta una distribución que se aproxima bastante a la normalidad, pero con una desviación estadísticamente significativa. Esto podría deberse a pequeñas asimetrías en la distribución de edades en la muestra.
+
+## MÉTODO DE REGRESIÓN LINEAL SIMPLE
+
+```{r}
+# Diagrama de dispersión 
+plot(PSA_preoperatorio ~ Volumen_prostata, data = datos_sangre,
+     col = "gray",
+     ylab = "PSA Preoperatorio",
+     xlab = "Volumen de Próstata (cm³)",
+     las = 1,
+     pch = 20, 
+     font.lab = 2, font.axis = 2) 
+
+# Ajustar modelo de regresión lineal simple 
+modelo_regresion = lm(PSA_preoperatorio ~ Volumen_prostata, data = datos_sangre)
+abline(modelo_regresion, lwd = 2, col = "darkred")
+```
+
+**Observaciones del gráfico:**
+
+-   Se observa una **relación positiva** entre el Volumen de próstata y el PSA preoperatorio
+
+-   A medida que aumenta el volumen prostático, tiende a aumentar el nivel de PSA
+
+-   La dispersión de puntos sugiere que la relación **no es perfectamente lineal**
+
+-   Existen varios **valores atípicos** (outliers), especialmente en el rango de volúmenes prostáticos más altos
+
+-   La línea de regresión (roja) muestra la tendencia general ascendente
+
+\
+Los puntos se distribuyen formando un patrón donde a mayores volúmenes prostáticos corresponden generalmente niveles más altos de PSA, aunque con considerable variabilidad.
+
+```{r}
+# Resultados del modelo 
+summary(modelo_regresion)
+```
+
+**Coeficientes:**
+
+-   **Intercepto (β₀):** 5.72533 → PSA esperado cuando el volumen prostático es 0 cm³
+
+-   **Pendiente (β₁):** 0.04511 → Por cada 1 cm³ de aumento en volumen prostático, el PSA aumenta en promedio 0.04511 mg/dL
+
+**Significancia estadística:**
+
+-   **Valor p del predictor:** 7.04e-05 \*\*\* (altamente significativo)
+
+-   **Conclusión:** Existe una asociación positiva estadísticamente significativa entre el volumen prostático y el PSA preoperatorio
+
+**Bondad de ajuste:**
+
+-   **R-cuadrado:** 0.05089 → Solo el 5.09% de la variación en PSA es explicada por el volumen prostático
+
+-   **Error estándar residual:** 5.909 → Desviación típica de los residuos
+
+\
+"Aunque existe una asociación positiva significativa entre el volumen prostático y el PSA, el volumen prostático explica solo una pequeña porción (5.1%) de la variabilidad total del PSA, lo que sugiere que otros factores no incluidos en el modelo tienen mayor influencia."
+
+```{r}
+# Coeficientes del modelo 
+summary(modelo_regresion)$coef
+```
+
+**Estimaciones puntuales:**
+
+-   **(Intercept):** 5.7253 ± 0.7173 → PSA basal de 5.73 mg/dL cuando volumen = 0 cm³
+
+-   **volumen_prostata:** 0.0451 ± 0.0112 → Incremento de 0.045 mg/dL por cada cm³ adicional
+
+**Significancia estadística:**
+
+-   **Intercepto:** t = 7.982, p = 2.999904e-14 → Altamente significativo
+
+-   **Volumen prostático:** t = 4.031, p = 7.042546e-05 → Altamente significativo
+
+**Precisión de las estimaciones:**\
+Los errores estándar son relativamente pequeños en comparación con las estimaciones, indicando que los coeficientes están bien estimados.
+
+**Ecuación del modelo:**\
+PSA_preoperatorio = 5.725 + 0.045 × volumen_prostata
+
+```{r}
+# Tabla de reporte profesional 
+theme_gtsummary_language("es")
+
+tabla_reporte <- modelo_regresion |> 
+  tbl_regression(intercept = T,
+                 estimate_fun = function(x) style_sigfig(x, digits = 4),
+                 pvalue_fun   = function(x) style_pvalue(x, digits = 3),
+                 label        = list(Volumen_prostata ~ "Volumen de próstata (cm³)")) |>
+  modify_caption("Regresión del PSA preoperatorio en función del volumen de próstata")
+
+tabla_reporte
+```
+
+Empleamos un modelo de regresión lineal para evaluar la asociación entre el PSA preoperatorio (mg/dL) y el volumen de próstata (cm³) usando datos de 305 pacientes. Solo el 5.1% de la variación en el PSA preoperatorio fue explicada por el volumen prostático (R² = 0.0509). Se encontró una asociación positiva estadísticamente significativa entre el PSA preoperatorio y el volumen de próstata (Beta = 0.045; p \< 0.001). En promedio, por cada diferencia de 1 cm³ en el volumen prostático, los pacientes difieren en el promedio de PSA preoperatorio en 0.045 mg/dL.
+
+**Limitaciones identificadas:**
+
+-   Ambas variables (PSA y volumen) no siguen distribución normal
+
+-   El modelo explica solo el 5.1% de la variabilidad
+
+-   Presencia de valores atípicos en el diagrama de dispersión
+
+```{r}
+# Exportar tabla 
+tabla_reporte |> 
+  as_flex_table()  |> 
+  flextable::save_as_docx(path = "tabla_reporte_psa_volumen.docx")
+```

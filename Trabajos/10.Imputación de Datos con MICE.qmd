@@ -1,0 +1,198 @@
+---
+title: "trabajo pc4 02"
+format: html
+editor: visual
+---
+
+-   INTEGRANTES:
+
+    -   Cassane Acevedo, Naomi Adriana
+
+    -   Dieguez Tasayco, Nallely Mirella
+
+    -   Moreyra Llancari, Diana Melisa
+
+    -   Quispe Berrocal Luigy
+
+    -   Wincho Rojas Omar
+
+```{r}
+install.packages("mice")
+install.packages("ggmice")
+```
+
+```{r}
+library(mice)
+library(tidyverse)
+library(here)
+library(rio)
+library(ggmice)
+library(gtsummary)
+```
+
+## Datos para este ejercicio
+
+Usaremos `almac_sangre.csv` con datos de pacientes con cáncer de próstata.
+
+```{r}
+# Cargar los datos
+data_prostata <- import(here("data", "almac_sangre.csv"))
+```
+
+## ¿Dónde están los valores perdidos?
+
+```{r}
+colSums(is.na(data_prostata))
+```
+
+```{r}
+data_prostata |>
+  select(Edad, Volumen_prostata, PSA_preoperatorio, Recurrencia_bioquimica) |>
+  ggmice::plot_pattern(square = TRUE, rotate = TRUE)
+```
+
+## Comparación de participantes con/sin valores perdidos
+
+```{r}
+tabla_psa = data_prostata |> 
+  select(Edad, Volumen_prostata, PSA_preoperatorio, Recurrencia_bioquimica) |>
+  mutate(missing = factor(
+    is.na(PSA_preoperatorio),
+    levels = c(FALSE, TRUE),
+    labels = c("Sin valores perdidos", "Con valores perdidos")
+  )) |> 
+  tbl_summary(by = missing) |> 
+  bold_labels()
+
+tabla_volumen = data_prostata |> 
+  select(Edad, Volumen_prostata, PSA_preoperatorio, Recurrencia_bioquimica) |>
+  mutate(missing = factor(
+    is.na(Volumen_prostata),
+    levels = c(FALSE, TRUE),
+    labels = c("Sin valores perdidos", "Con valores perdidos")
+  )) |> 
+  tbl_summary(by = missing) |> 
+  bold_labels()
+
+tabla <- tbl_merge(
+  tbls = list(tabla_psa, tabla_volumen),
+  tab_spanner = c("**PSA**", "**Volumen**")
+)
+```
+
+```{r}
+tabla
+```
+
+## Preparar datos para imputación
+
+```{r}
+input_data =
+  data_prostata |>
+  select(Edad, Volumen_prostata, PSA_preoperatorio, Recurrencia_bioquimica) |> 
+  mutate(Recurrencia_bioquimica = as.factor(Recurrencia_bioquimica))
+```
+
+## Imputar datos con `mice()`
+
+```{r}
+names(input_data)
+```
+
+```{r}
+data_imputada =
+  mice(
+    input_data,
+    m = 20,
+    method = c("pmm", "pmm", "pmm", "logreg"),
+    maxit = 20,
+    seed = 3,
+    print = F
+    )
+```
+
+```{r}
+data_imputada
+```
+
+## Analizar datos imputados
+
+```{r}
+ggmice(data_imputada, aes(x = .imp, y = PSA_preoperatorio)) +
+  geom_jitter(height = 0, width = 0.25) +
+  geom_boxplot(width = 0.5, size = 1, alpha = 0.55, outlier.shape = NA) +
+  labs(x = "Imputation number")
+```
+
+```{r}
+data_imputada_l <- complete(data_imputada, "long", include = TRUE)
+
+data_imputada_l <- data_imputada_l %>% 
+  mutate(imputed = .imp > 0,
+         imputed = factor(imputed,
+                          levels = c(F,T),
+                          labels = c("Observado", "Imputado")))
+
+prop.table(table(data_imputada_l$Recurrencia_bioquimica,
+                 data_imputada_l$imputed),
+           margin = 2)
+```
+
+## Regresión con datos imputados
+
+```{r}
+tabla_multi <-
+  data_imputada |> 
+  with(glm(Recurrencia_bioquimica ~ Edad + Volumen_prostata + PSA_preoperatorio,
+           family = binomial(link = "logit"))) |> 
+  tbl_regression(exponentiate = TRUE) |>
+  bold_p(t = 0.05)
+```
+
+```{r}
+tabla_multi
+```
+
+## INTERPRETACION:
+
+**Interpretación de los resultados de la regresión logística:**
+
+1.  **Edad (OR = 1.03)**
+
+    -   Por cada año adicional de edad, el odds de recurrencia bioquímica aumenta en un 3%.
+
+    -   El intervalo de confianza del 95% (0.99 - 1.08) incluye el valor 1.
+
+    -   El valor p (0.2) \> 0.05, lo que indica que **NO es estadísticamente significativo**.
+
+    -   **Conclusión**: La edad no tiene una asociación significativa con la recurrencia bioquímica en este modelo.
+
+2.  **Volumen prostático (OR = 0.99)**
+
+    -   Por cada unidad de aumento en el volumen prostático, el odds de recurrencia disminuye en un 1%.
+
+    -   El intervalo de confianza del 95% (0.98 - 1.00) también incluye el valor 1.
+
+    -   El valor p (0.2) \> 0.05, **NO es estadísticamente significativo**.
+
+    -   **Conclusión**: El volumen prostático tampoco muestra una asociación significativa con la recurrencia.
+
+3.  **PSA preoperatorio (OR = 1.10)**
+
+    -   Por cada unidad de aumento en el PSA preoperatorio, el odds de recurrencia bioquímica aumenta en un 10%.
+
+    -   El intervalo de confianza del 95% (1.05 - 1.15) **NO incluye el valor 1**.
+
+    -   El valor p (\<0.001) es **altamente significativo** (p \< 0.05).
+
+    -   **Conclusión**: El PSA preoperatorio es un predictor estadísticamente significativo de recurrencia bioquímica.
+
+**CONCLUSION:**
+
+-   **Variable significativa**: Solo el PSA preoperatorio predice significativamente la recurrencia bioquímica.
+
+-   **Magnitud del efecto**: Un aumento en el PSA preoperatorio se asocia con mayor riesgo de recurrencia.
+
+-   **Variables no significativas**: Ni la edad ni el volumen prostático muestran asociación significativa en este modelo.
+
+-   **Calidad del modelo**: El modelo identifica correctamente al PSA como factor de riesgo, lo que coincide con la evidencia clínica conocida sobre el cáncer de próstata.

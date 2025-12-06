@@ -1,0 +1,306 @@
+---
+title: "PRACTICA 03 - 2025"
+format: html
+editor: visual
+---
+
+## TRABAJO 03 DE SISTEMATIZACION Y METODOS ESTADISTICOS
+
+INTEGRANTES:
+
+-   Avilés Magallanes María Fernanda
+-   ⁠Dieguez Tasayco Nallely
+-   ⁠Cassane Acevedo Naomi
+-   ⁠Medina Li Margaret
+-   Moreyra Diana
+-   Quispe Berrocal Luigy
+-   Wincho Rojas Omar
+
+## Instalar paquetes si no esta instalado
+
+#Si los paquetes estan instalados solo pasar al paso 2
+
+```{r}
+#PASO 1
+install.packages("tidyverse")
+install.packages("rio")
+install.packages("here")
+install.packages("janitor")
+install.packages("stringi")
+install.packages("DataExplorer")
+
+install.packages("finalfit")
+install.packages("flextable")
+install.packages("gtsummary")
+```
+
+```{r}
+#PASO 2
+library(tidyverse)
+library(rio)
+library(here)
+library(janitor)
+library(stringi)  
+library(DataExplorer) 
+library(gtsummary) 
+library(finalfit) 
+library(flextable)
+```
+
+## Importar almac_sangre.csv usando el paquete rio
+
+```{r}
+almac_sangre = import(here("data", "almac_sangre.csv"))
+```
+
+## Limpieza de datos de la data almac_sangre.csv
+
+#ESTE CODIGO CORRIGE EDAD ( Categoria y elimina mediana y redonde a numero entero las edades y corrige los si y no y los no asignados)
+
+```{r}
+library(tidyverse)
+
+almac_sangre_1 <- almac_sangre %>%
+  mutate(
+    Edad = round(Edad, 0),
+    Grupo_edad_GR = case_when(
+      Edad < 50 ~ "Joven",
+      Edad >= 50 & Edad < 65 ~ "Intermedio",
+      Edad >= 65 ~ "Mayor"
+    ),
+    Rango_edad = case_when(
+      Edad < 50 ~ "<50 años",
+      Edad >= 50 & Edad < 65 ~ "50-64 años",
+      Edad >= 65 ~ "≥65 años"
+    ),
+    .keep = "all"
+  ) %>%
+  select(Grupo_edad_GR, Rango_edad, Edad, everything()) %>%
+  select(-Edad_mediana_GR) %>%
+  mutate(across(
+    c(
+      Raza_afroamericana, Historia_familiar, Confinamiento_organo,
+      Terapia_previa, Terapia_adyuvante, Radioterapia_adyuvante,
+      Recurrencia_bioquimica, Censor, BN_positivo
+    ),
+    ~ case_when(
+      str_to_lower(stri_trans_general(as.character(.x), "Latin-ASCII")) == "si" ~ "SI",
+      str_to_lower(stri_trans_general(as.character(.x), "Latin-ASCII")) == "no" ~ "NO",
+      str_to_lower(stri_trans_general(as.character(.x), "Latin-ASCII")) == "no asignado" ~ NA_character_,
+      TRUE ~ as.character(.x)
+    )
+  )) %>%
+  mutate(across(
+    everything(),
+    ~ ifelse(str_to_lower(str_trim(as.character(.))) == "no asignado", NA, .)
+  ))
+
+```
+
+# RESUMEN DE DATOS DE LAS VARIABLES
+
+```{r}
+str(almac_sangre_1)
+```
+
+# Generar gráficos categóricos
+
+\#**1. Gráfico de barras para Grupo_edad_GR (categórica)**
+
+```{r}
+library(tidyverse)
+ggplot(almac_sangre_1, aes(x = Grupo_edad_GR)) +
+  geom_bar(fill = "#2E86C1") +
+  labs(title = "Frecuencia por Grupo de Edad", x = "Grupo de Edad", y = "Frecuencia")
+```
+
+Se observa un gráfico de barras generado con ggplot2, el cual representa la frecuencia de registros según el grupo de edad en el conjunto de datos almac_sangre_1.
+
+-   Eje X (Grupo de Edad): Se muestra las categorías de edad, en las que se muestra joven, intermedio y mayor.
+
+-   Eje Y (Frecuencia): Representa el número de observaciones (frecuencia) para cada grupo.
+
+El grupo intermedio tiene la mayor frecuencia (alrededor de 200 registros), mientras el grupo mayor tiene una frecuencia intermedia (aproximado de 100 registros) y el grupo joven tiene la menor frecuencia (menos de 50 registros). Teniendo así como resultado que la mayoría de los datos pertenecen al grupo de edad intermedio, seguido del grupo mayor, y el grupo con menos datos es el joven.
+
+\#**2. Gráfico de pastel para Raza_afroamericana (categórica)**library(tidyverse)
+
+```{r}
+library(tidyverse)
+
+almac_sangre_1 %>%
+  count(Raza_afroamericana) %>%
+  mutate(porcentaje = n / sum(n) * 100,
+         etiqueta = paste0(Raza_afroamericana, " (", round(porcentaje, 1), "%)")) %>%
+  ggplot(aes(x = "", y = n, fill = Raza_afroamericana)) +
+  geom_col(width = 1, color = "white") +
+  coord_polar(theta = "y") +
+  geom_text(aes(label = etiqueta), 
+            position = position_stack(vjust = 0.5), size = 5) +
+  labs(title = "Distribución de Raza Afroamericana", fill = "Raza Afroamericana") +
+  theme_void()
+```
+
+Gráfico de pastel generado en R con ggplot2, y muestra la distribución porcentual de individuos según la variable “Raza Afroamericana” en el conjunto de datos almac_sangre_1.
+
+Se representa con "NO" a las personas que no se identifican como afroamericanas (82.6%) y con "SÍ" a las personas que sí se identifican como afroamericanas (17.4%). Teniendo como resultado que la mayoría de las personas en el conjunto de datos no se identifican como afroamericanas, con solo un 17.4% que si se identifican.
+
+\#**3. Gráfico de barras apiladas proporcionales para Terapia_adyuvante y Grupo_edad_GR (categóricas combinadas)**
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+# Calcular proporciones
+df_prop <- almac_sangre_1 %>%
+  group_by(Grupo_edad_GR, Terapia_adyuvante) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  group_by(Grupo_edad_GR) %>%
+  mutate(prop = n / sum(n),
+         etiqueta = scales::percent(prop, accuracy = 0.1))
+
+# Graficar con etiquetas
+ggplot(df_prop, aes(x = Grupo_edad_GR, y = prop, fill = Terapia_adyuvante)) +
+  geom_col(position = "stack") +
+  geom_text(aes(label = etiqueta), 
+            position = position_stack(vjust = 0.5), size = 4, color = "white") +
+  labs(title = "Proporción de Terapia Adyuvante por Grupo de Edad",
+       x = "Grupo de Edad", y = "Proporción") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal()
+```
+
+Gráfico de barras apiladas proporcionales generado en R con ggplot2. Muestra la proporción de pacientes que recibieron o no Terapia Adyuvante, desglosada por grupo de edad.
+
+-   Eje X (Grupo de Edad): Categorias de intermedio, joven y mayor
+
+-   Eje Y (Proporción): Representa la proporción relativa de pacientes (de 0% a 100%) dentro de cada grupo de edad que sí o no recibieron terapia adyuvante.
+
+Según los colores el color Rojo: Pacientes que NO recibieron terapia adyuvante y Turquesa: Pacientes que SÍ la recibieron.
+
+Teniendo como resultado que en todos los grupos de edad, la gran mayoría de pacientes no recibió terapia adyuvante, el grupo con mayor proporción de pacientes que si recibio la terapia es el grupo joven (5%) y el de baja terapia adyuvente es el grupo mayor (1.9%)
+
+# Generar gráficos continuos
+
+\#**4. Histograma para Edad (continua)**
+
+```{r}
+ggplot(almac_sangre_1, aes(x = Edad)) +
+  geom_histogram(binwidth = 5, fill = "#117A65", color = "white") +
+  labs(title = "Histograma de Edad", x = "Edad", y = "Frecuencia")
+```
+
+En el histograma generado en R con ggplot.
+
+-   Eje X: Se representa la edad de los pacientes: En rangos de 40 a 80 años.
+
+-   Eje Y: Se representa la frecuencia, es decir la cantidad de personas que cumplan con el rango de edad antes mencionado.
+
+Teniendo como resultado que son alrededor de 80 personas que tienen el rango de edad de 60 años, mientras que el rango de edad con menor frecuencia es el de 80 años.
+
+```{r}
+export(almac_sangre_1, here("almac_sangre_1.csv"))
+```
+
+# IMPORTANDO DATA LIMPIA
+
+```{r}
+almac_sangre_1 = import(here("data", "almac_sangre_1.csv"))
+```
+
+```{r}
+# Cargar los datos
+datos <- import(here("data", "almac_sangre_1.csv"))
+
+# Obtener todas las edades únicas y ordenadas
+Edad <- sort(unique(datos$Edad))
+
+# Mostrar las edades únicas
+print(Edad)
+
+# PRIMER PASO
+```
+
+```{r}
+## promedio de edad
+edad = c(38, 40, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79)
+```
+
+```{r}
+mean(edad) ## SEGUNDO PASO
+```
+
+```{r}
+# Cargar los datos
+datos <- import(here("data", "almac_sangre_1.csv"))
+
+# 1. VALORES ÚNICOS DE ESTADIO_T
+print("VALORES ÚNICOS DE ESTADIO_T:")
+print(unique(datos$Estadio_T))
+
+# 2. DISTRIBUCIÓN DE FRECUENCIAS
+print("DISTRIBUCIÓN DE FRECUENCIAS:")
+print(table(datos$Estadio_T))
+
+# 3. TOTAL DE REGISTROS
+print(paste("TOTAL DE REGISTROS:", length(datos$Estadio_T)))
+```
+
+```{r}
+# Crear el vector con las frecuencias
+frecuencias <- c(13, 269, 34)
+
+# Calcular la desviación estándar
+desviacion_estandar <- sd(frecuencias)
+
+# Mostrar el resultado
+print(paste("Desviación estándar de las frecuencias:", round(desviacion_estandar, 2)))
+```
+
+```{r}
+# 1. LIMPIAR Y PREPROCESAR LOS DATOS
+# Convertir a factor y manejar valores vacíos
+datos$Volumen_tumoral <- factor(datos$Volumen_tumoral, 
+                                levels = c("Bajo", "Medio", "Alto"))
+
+# 2. VALORES ÚNICOS DE VOLUMEN_TUMORAL
+print("VALORES ÚNICOS DE VOLUMEN_TUMORAL:")
+print(unique(datos$Volumen_tumoral))
+
+# 3. DISTRIBUCIÓN DE FRECUENCIAS
+print("DISTRIBUCIÓN DE FRECUENCIAS:")
+freq_table <- table(datos$Volumen_tumoral, useNA = "always")
+print(freq_table)
+
+# 4. TOTAL DE REGISTROS
+print(paste("TOTAL DE REGISTROS:", length(datos$Volumen_tumoral)))
+
+# 5. PORCENTAJES DE CADA CATEGORÍA (excluyendo NA)
+print("PORCENTAJES DE CADA CATEGORÍA:")
+prop_table <- prop.table(table(datos$Volumen_tumoral)) * 100
+print(round(prop_table, 2))
+
+# 6. GRÁFICO CORREGIDO - FILTRANDO VALORES VACÍOS
+library(ggplot2)
+library(dplyr)
+
+# Filtrar solo las categorías válidas
+datos_filtrados <- datos %>% 
+  filter(Volumen_tumoral %in% c("Bajo", "Medio", "Alto"))
+
+ggplot(datos_filtrados, aes(x = Volumen_tumoral)) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(title = "Distribución de Volumen Tumoral",
+       x = "Volumen Tumoral",
+       y = "Frecuencia") +
+  theme_minimal() +
+  scale_x_discrete(limits = c("Bajo", "Medio", "Alto"))  # Forzar el orden
+
+# 7. INFORMACIÓN SOBRE VALORES FALTANTES O INVÁLIDOS
+print(paste("VALORES FALTANTES (NA):", sum(is.na(datos$Volumen_tumoral))))
+print(paste("VALORES VACÍOS:", sum(datos$Volumen_tumoral == "" | is.na(datos$Volumen_tumoral))))
+
+# 8. VERIFICAR SI HAY VALORES CON ESPACIOS EN BLANCO
+print("VALORES CON ESPACIOS EN BLANCO:")
+print(table(datos$Volumen_tumoral == ""))
+
+```

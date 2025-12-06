@@ -1,0 +1,204 @@
+---
+title: "PC3_2"
+format: html
+editor: visual
+---
+
+-   INTEGRANTES:
+-   Cassane Acevedo, Naomi Adriana
+-   Dieguez Tasayco, Nallely Mirella
+-   Moreyra Llancari, Diana Melisa
+-   Quispe Berrocal Luigy
+-   Wincho Rojas Omar
+
+```{r}
+install.packages("performance")
+```
+
+```{r}
+library(tidyverse)
+library(here)
+library(rio)
+library(gtsummary)
+library(car)
+library(survival)
+library(performance)
+```
+
+Importamos el dataset
+
+```{r}
+almac_sangre <- import(here("data", "almac_sangre.csv"))
+```
+
+Observamos los datos
+
+```{r}
+head(almac_sangre)
+```
+
+## Preparación de los datos
+
+Definimos las categorías de referencia para las variables categóricas.
+
+```{r}
+almac_sangre_1 <- almac_sangre |> 
+  mutate(
+    Raza_afroamericana = relevel(as.factor(Raza_afroamericana), ref = "No"),
+    Historia_familiar = relevel(as.factor(Historia_familiar), ref = "No"),
+    Confinamiento_organo = relevel(as.factor(Confinamiento_organo), ref = "No"),
+    Terapia_previa = relevel(as.factor(Terapia_previa), ref = "No"),
+    Recurrencia_bioquimica = relevel(as.factor(Recurrencia_bioquimica), ref = "No")
+  ) |> 
+  na.omit()
+```
+
+## Análisis univariado
+
+```{r}
+tabla_reg_log_univ <- almac_sangre_1 |>
+  tbl_uvregression(
+    include = c(Edad, Raza_afroamericana, Historia_familiar, Volumen_prostata, 
+                Volumen_tumoral, Confinamiento_organo, PSA_preoperatorio, 
+                Terapia_previa, Unidades_transfundidas),
+    y = Recurrencia_bioquimica,
+    method = glm,
+    method.args = list(family = binomial),
+    exponentiate = TRUE,
+    conf.int = TRUE,
+    hide_n = TRUE,
+    add_estimate_to_reference_rows = FALSE,
+    pvalue_fun = ~ style_pvalue(.x, digits = 3),
+    estimate_fun = ~ style_number(.x, digits = 2),
+    label = list(
+      Edad ~ "Edad (años)",
+      Raza_afroamericana ~ "Raza afroamericana",
+      Historia_familiar ~ "Historia familiar",
+      Volumen_prostata ~ "Volumen de próstata",
+      Volumen_tumoral ~ "Volumen tumoral",
+      Confinamiento_organo ~ "Confinamiento de órgano",
+      PSA_preoperatorio ~ "PSA preoperatorio",
+      Terapia_previa ~ "Terapia previa",
+      Unidades_transfundidas ~ "Unidades transfundidas"
+    )
+  ) |>
+  bold_labels() |>
+  bold_p(t = 0.05) |>
+  modify_header(estimate = "**OR no ajustado**", p.value = "**Valor P**")
+```
+
+```{r}
+tabla_reg_log_univ
+```
+
+**Interpretación del análisis univariado:**
+
+Las variables significativamente asociadas con la recurrencia bioquímica fueron: historia familiar (OR=0.37, p=0.047), volumen tumoral bajo (OR=0.04, p=0.002) y medio (OR=0.27, p\<0.001), confinamiento de órgano (OR=0.26, p\<0.001), PSA preoperatorio (OR=1.09, p\<0.001) y terapia previa (OR=4.64, p\<0.001). El PSA preoperatorio y la terapia previa mostraron efecto de riesgo, mientras las demás fueron protectoras. La edad, raza afroamericana, volumen prostático y unidades transfundidas no mostraron asociación significativa.
+
+## Análisis multivariado
+
+### Paso 1: Ajuste del modelo inicial
+
+```{r}
+var_modelo <- glm(
+  Recurrencia_bioquimica ~ Edad + Raza_afroamericana + Historia_familiar + 
+    Volumen_prostata + Volumen_tumoral + Confinamiento_organo + 
+    PSA_preoperatorio + Terapia_previa + Unidades_transfundidas,
+  data = almac_sangre_1,
+  family = binomial(link = "logit")
+)
+```
+
+### Paso 2: Selección automática de variables
+
+#### Eliminación hacia atrás
+
+```{r}
+multi_backward <- var_modelo |>
+  step(direction = "backward", trace = FALSE)
+```
+
+#### Selección hacia adelante
+
+```{r}
+multi_forward <- var_modelo |>
+  step(direction = "forward", trace = FALSE)
+```
+
+#### Selección paso a paso
+
+```{r}
+multi_stepwise <- var_modelo |>
+  step(direction = "both", trace = FALSE)
+```
+
+### Paso 3: Comparación de AIC
+
+```{r}
+summary(multi_backward)
+```
+
+```{r}
+summary(multi_forward)
+```
+
+```{r}
+summary(multi_stepwise)
+```
+
+### Paso 4: Evaluación de colinealidad
+
+```{r}
+performance::check_collinearity(multi_backward, ci = NULL)
+```
+
+```{r}
+performance::check_collinearity(multi_forward, ci = NULL)
+```
+
+```{r}
+performance::check_collinearity(multi_stepwise, ci = NULL)
+```
+
+## Modelo final
+
+```{r}
+modelo_final <- multi_backward  # o multi_stepwise, según resultados
+```
+
+## Tabla final univariado vs. multivariado
+
+```{r}
+tabla_multi <- modelo_final |>
+  tbl_regression(
+    exponentiate = TRUE,
+    conf.int = TRUE,
+    pvalue_fun = ~ style_pvalue(.x, digits = 3),
+    estimate_fun = ~ style_number(.x, digits = 2),
+    label = list(
+      Historia_familiar ~ "Historia familiar",
+      Volumen_prostata ~ "Volumen de próstata",
+      Volumen_tumoral ~ "Volumen tumoral",
+      Terapia_previa ~ "Terapia previa"
+    )
+  ) |>
+  bold_labels() |>
+  bold_p(t = 0.05) |>
+  modify_header(estimate = "**OR ajustado**", p.value = "**Valor p**")
+```
+
+```{r}
+tabla_final <- 
+  tbl_merge(
+    list(tabla_reg_log_univ, tabla_multi),
+    tab_spanner = c("**Univariado**", "**Multivariado**")
+  )
+```
+
+```{r}
+tabla_final
+```
+
+**Interpretación del análisis multivariado:**
+
+En el modelo ajustado, el **volumen tumoral** mostró un fuerte efecto protector: los tumores de volumen bajo (OR=0.03, p=0.001) y medio (OR=0.30, p\<0.001) redujeron significativamente el riesgo de recurrencia bioquímica comparados con tumores de volumen alto. La **terapia previa** incrementó 4.5 veces el riesgo de recurrencia (OR=4.47, p\<0.001). La **historia familiar** y el **volumen prostático** no alcanzaron significancia estadística tras el ajuste. Variables como confinamiento de órgano y PSA preoperatorio fueron excluidas del modelo final durante la selección automática.

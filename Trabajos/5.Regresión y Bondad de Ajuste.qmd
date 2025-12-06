@@ -1,0 +1,145 @@
+---
+title: "TRABAJO 05"
+format: html
+editor: visual
+---
+
+## TRABAJO 05 DE SISTEMATIZACION Y METODOS ESTADISTICOS
+
+INTEGRANTES:
+
+-   Avilés Magallanes María Fernanda
+-   ⁠Dieguez Tasayco Nallely
+-   ⁠Cassane Acevedo Naomi
+-   ⁠Medina Li Margaret
+-   Moreyra Diana
+-   Quispe Berrocal Luigy
+-   Wincho Rojas Omar
+
+```{r}
+# Cargamos los paquetes necesarios
+library(rio)
+library(here)
+library(gtsummary)
+```
+
+```{r}
+# Cargar los datos
+data_prostata <- import(here("data", "almac_sangre_1.csv"))
+```
+
+### **Para la variable Edad**
+
+Esta variable corresponde a la edad de los pacientes en años. En R, usamos la función nativa `shapiro.test()` para realizar la prueba de Shapiro-Wilk
+
+```{r}
+# Para la variable Edad
+# Esta variable corresponde a la edad de los pacientes en años. En R, usamos la función nativa shapiro.test() para realizar la prueba de Shapiro-Wilk
+
+shapiro.test(data_prostata$Edad)
+```
+
+## **¿POR QUÉ SE REALIZA LA PRUEBA?**
+
+**Para verificar si los datos siguen una distribución normal** y así poder elegir las pruebas estadísticas correctas para el análisis.
+
+## **INTERPRETACIÓN DEL RESULTADO**
+
+**Los datos NO son normales** porque el valor p (0.0389) es menor que 0.05, lo que indica que la edad de los pacientes no sigue una distribución normal.
+
+### **Para la variable PSA_preoperatorio**
+
+Esta variable corresponde a los niveles de PSA preoperatorio en ng/mL.
+
+```{r}
+shapiro.test(data_prostata$PSA_preoperatorio)
+```
+
+## **¿POR QUÉ SE USA ESTA PRUEBA?**
+
+**Para verificar si el PSA preoperatorio sigue distribución normal** y así determinar qué pruebas estadísticas son apropiadas para analizar esta variable.
+
+## **INTERPRETACIÓN DEL RESULTADO**
+
+**Los datos NO son normales** porque el valor p (\< 2.2e-16) es mucho menor que 0.05. Esto indica que los niveles de PSA preoperatorio no siguen una distribución normal en la muestra de pacientes.
+
+## CONCLUSION:
+
+-   **Prueba t de Student**
+
+-   **ANOVA**
+
+**Estas SÍ requieren normalidad** y no serían apropiadas. ( NO SE USA EN ESTE CASO)
+
+## METODO DE REGRESION
+
+### **REGRESION LINEAL.**
+
+-   **lm** = lineal model (modelo lineal)
+
+-   **PSA_preoperatorio** = variable que quieres predecir
+
+-   **Edad** = variable que explica el PSA
+
+-   **summary(modelo)** = resultados
+
+```{r}
+modelo <- lm(PSA_preoperatorio ~ Edad, data = data_prostata)
+summary(modelo)
+```
+
+Por cada año más de edad, el PSA **solo baja 0.03**
+
+**Interpretación:**
+
+-   ¿La edad afecta el PSA?
+
+    -   **NO.** La edad no afecta significativamente el PSA (p = 0.476)
+
+-   ¿Cuánto aumenta el PSA por cada año de edad?
+
+    -   **DISMINUYE 0.03 ng/mL** por cada año de edad, pero este efecto es tan pequeño que no es estadísticamente significativo.
+
+-   0.05 MAYOR SE APRUEBA HIPOTESIS NULA
+
+    **CONCLUSION:**\
+    La edad EN ESTA DATA **no sirve para predecir** sus niveles de PSA. ( ANTIGENO PRODUCIDO POR LA PROSTATA) **Después de operar próstata, el PSA debe desaparecer. Si vuelve a aparecer, significa que el cáncer regresó.**
+
+## **Para datos categóricos - Prueba de Chi-cuadrado**
+
+El dataset para esta sesión contiene información sobre la recurrencia bioquímica en pacientes con cáncer de próstata. En esta muestra, el número de participantes con recurrencia bioquímica es:
+
+```{r}
+table(data_prostata$Recurrencia_bioquimica)
+```
+
+Un estudio <https://www.nature.com/articles/s41391-023-00712-z.pdf>[ ](https://www.nature.com/articles/s41391-023-00712-z.pdf) nos indica lo siguiente:
+
+Específicamente, alrededor del 20% de los pacientes pueden presentar un aumento en el nivel de PSA que indica posible recurrencia, lo que aumenta el riesgo de metastasis y mortalidad específica por cáncer de próstata. La recurrencia bioquímica puede representar tanto una recurrencia local como un avance hacia la enfermedad metastásica, y su detección temprana es crucial para la implementación de estrategias de manejo personalizadas
+
+En este caso, la prevalencia del estudio previo representa el valor esperado, mientras que la prevalencia observada en nuestro conjunto de datos representa el valor observado.
+
+Uno de los objetivos de nuestro análisis es evaluar si la proporción observada de recurrencia bioquímica difiere significativamente de la proporción esperada. Para ello, utilizamos la prueba de bondad de ajuste de Chi-cuadrado.
+
+Las hipótesis de esta prueba son las siguientes:
+
+-   **Hipótesis nula (H₀):** No existe una diferencia significativa entre la proporción observada y la esperada.
+
+-   **Hipótesis alternativa (H₁):** Existe una diferencia significativa entre la proporción observada y la esperada.
+
+En R, esta prueba se realiza mediante la función `chisq.test()`, a la cual se deben proporcionar los valores observados y las proporciones esperadas para llevar a cabo la comparación.
+
+```{r}
+# Prueba de Chi-cuadrado usando el 20% de referencia
+chisq.test(x = c(54, 262), p = c(0.20, 0.80))
+```
+
+## **Interpretación**
+
+**No existe diferencia significativa** entre la recurrencia observada en nuestros pacientes y lo reportado en la literatura médica.
+
+-   **Valor p = 0.1957** (mayor que 0.05)
+
+-   **Conclusión:** La proporción de pacientes con recurrencia bioquímica en nuestro estudio **no es diferente** del 20% esperado según los estudios de referencia.
+
+-   **Significado práctico:** Nuestra muestra de pacientes tiene un comportamiento similar al reportado en la población general de cáncer de próstata.

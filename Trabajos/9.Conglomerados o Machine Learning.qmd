@@ -1,0 +1,297 @@
+---
+title: "trabajo 01 pc4"
+format: html
+editor: visual
+---
+
+-   INTEGRANTES:
+    -   Cassane Acevedo, Naomi Adriana
+
+    -   Dieguez Tasayco, Nallely Mirella
+
+    -   Moreyra Llancari, Diana Melisa
+
+    -   Quispe Berrocal Luigy
+
+    -   Wincho Rojas Omar
+
+## Instalar y cargar los paquetes
+
+```{r}
+install.packages("factoextra")
+install.packages("cluster")
+```
+
+```{r}
+library(factoextra)
+library(cluster)
+library(here)
+library(rio)
+library(tidyverse)
+```
+
+# 1 ¿Cómo aplicaremos Machine Learning a esta sesión?
+
+Para esta sesión, aplicaremos técnicas de machine learning no supervisado (análisis de conglomerados) a la base de datos "almac_sangre", que contiene información de pacientes con cáncer de próstata. El objetivo es identificar grupos naturales de pacientes que compartan características similares en cuanto a sus parámetros clínicos y de laboratorio.
+
+## 1.1 Uso de las técnicas de agrupamiento para responder preguntas de investigación en salud
+
+Las técnicas de agrupamiento nos permitirán clasificar a los pacientes en grupos basados en su similitud respecto a variables como edad, volumen prostático, PSA preoperatorio, unidades transfundidas, entre otras. Los grupos encontrados pueden ser utilizados para evaluar diferencias en la recurrencia bioquímica, necesidad de terapias adyuvantes u otros desenlaces clínicos.
+
+# 2 Análisis de agrupamiento jerárquico (Hierarchical Clustering)
+
+## 2.1 Sobre el problema para esta sesión
+
+El dataset "almac_sangre" contiene información de pacientes con cáncer de próstata. Incluye variables como edad, volumen prostático, PSA preoperatorio, unidades de sangre transfundidas, y variables relacionadas con la progresión de la enfermedad. El objetivo es aplicar métodos de agrupamiento para identificar patrones naturales entre los pacientes.
+
+## 2.2 El dataset para esta sesión
+
+### 2.2.1 Importando los datos
+
+```{r}
+# Cargar los datos
+almac_sangre <- import(here("data", "almac_sangre.csv"))
+```
+
+### 2.2.2 Exploración inicial
+
+```{r}
+# Estructura de los datos
+glimpse(almac_sangre)
+
+# Resumen estadístico
+summary(almac_sangre)
+```
+
+## 2.3 Preparación de los datos
+
+### 2.3.1 Solo datos numéricos
+
+Para el análisis de agrupamiento jerárquico usaremos solo variables numéricas relevantes.
+
+```{r}
+# Crear un ID único para cada paciente
+almac_sangre <- almac_sangre %>%
+  mutate(Paciente_ID = paste0("P", row_number()))
+
+# Seleccionar variables numéricas para el clustering
+almac_sangre_1 <- almac_sangre |>
+  select(Paciente_ID, Edad, Volumen_prostata, PSA_preoperatorio, Unidades_transfundidas,
+         Tiempo_hasta_recurrencia, Edad_mediana_GR) |>
+  column_to_rownames("Paciente_ID")
+
+# Verificar la estructura
+head(almac_sangre_1)
+```
+
+### 2.3.2 La importancia de estandarizar
+
+Estandarizamos las variables para que todas contribuyan equitativamente al análisis.
+
+```{r}
+almac_sangre_escalado = scale(almac_sangre_1)
+```
+
+Un vistazo a los datos antes del escalamiento:
+
+```{r}
+head(almac_sangre_1)
+```
+
+y un vistazo después del escalamiento:
+
+```{r}
+head(almac_sangre_escalado)
+```
+
+## 2.4 Cálculo de distancias
+
+```{r}
+dist_almac_sangre <- dist(almac_sangre_escalado, method = "euclidean")
+```
+
+## 2.4.1 Visualizando las distancias euclidianas con un mapa de calor
+
+```{r}
+fviz_dist(dist_almac_sangre)
+```
+
+## 2.5 El método de agrupamiento: función de enlace (linkage)
+
+```{r}
+dist_link_almac_sangre <- hclust(d = dist_almac_sangre, method = "ward.D2")
+```
+
+## 2.7 Dendrogramas para la visualización de patrones
+
+```{r}
+fviz_dend(dist_link_almac_sangre, cex = 0.5)
+```
+
+## 2.8 ¿Cuántos grupos se formaron en el dendrograma?
+
+```{r}
+fviz_dend(dist_link_almac_sangre, 
+          k = 3,
+          cex = 0.4,
+          k_colors = c("#2E9FDF", "#E7B800", "#FC4E07"),
+          color_labels_by_k = TRUE, 
+          rect = TRUE)
+```
+
+# 3 Agrupamiento con el algoritmo K-Means
+
+## 3.1 El problema y dataset para este ejercicio
+
+Usaremos el mismo dataset preparado anteriormente.
+
+## 3.2 Estimando el número óptimo de clusters
+
+Primero escalamos los datos (ya lo hicimos anteriormente):
+
+```{r}
+# Escalar los datos para el análisis k-means
+# Eliminar filas con valores NA antes de escalar
+almac_sangre_clean <- almac_sangre_1[complete.cases(almac_sangre_1), ]
+almac_sangre_escalado <- scale(almac_sangre_clean)
+```
+
+Ahora graficamos la suma de cuadrados dentro de los clusters:
+
+```{r}
+# Alternativa: usar menos variables si hay problemas de dimensionalidad
+almac_sangre_reduced <- almac_sangre_clean[, c("Edad", "PSA_preoperatorio", "Unidades_transfundidas")]
+almac_sangre_escalado_reduced <- scale(almac_sangre_reduced)
+
+fviz_nbclust(almac_sangre_escalado_reduced, kmeans, nstart = 25, method = "wss") + 
+  geom_vline(xintercept = 3, linetype = 2)
+```
+
+## 3.3 Cálculo del agrupamiento k-means
+
+```{r}
+set.seed(123)
+km_res <- kmeans(almac_sangre_escalado, 3, nstart = 25)
+```
+
+```{r}
+km_res
+```
+
+## 3.4 Visualización de los clústeres k-means
+
+```{r}
+fviz_cluster(
+  km_res,
+  data = almac_sangre_escalado,
+  palette = c("#2E9FDF", "#E7B800", "#FC4E07"),
+  ellipse.type = "euclid",
+  repel = TRUE,
+  ggtheme = theme_minimal()
+)
+```
+
+### 3.4.1 ¿Cómo interpretar?
+
+El gráfico muestra la distribución de los pacientes en los tres grupos identificados. Cada grupo representa pacientes con características similares en términos de las variables incluidas en el análisis.
+
+## 3.5 Análisis de las características de cada cluster
+
+```{r}
+# Añadir la asignación de clusters al dataset original
+# Primero crear un dataframe con los IDs y clusters
+clusters_df <- data.frame(
+  Paciente_ID = rownames(almac_sangre_clean),
+  cluster = km_res$cluster
+)
+
+# Unir con el dataset original usando el ID del paciente
+almac_sangre_clusters <- almac_sangre %>%
+  mutate(Paciente_ID = paste0("P", row_number())) %>%
+  left_join(clusters_df, by = "Paciente_ID")
+
+# Resumen de características por cluster
+caracteristicas_clusters <- almac_sangre_clusters %>%
+  group_by(cluster) %>%
+  summarise(
+    n_pacientes = n(),
+    Edad_promedio = mean(Edad, na.rm = TRUE),
+    Volumen_prostata_promedio = mean(Volumen_prostata, na.rm = TRUE),
+    PSA_preoperatorio_promedio = mean(PSA_preoperatorio, na.rm = TRUE),
+    Unidades_transfundidas_promedio = mean(Unidades_transfundidas, na.rm = TRUE),
+    Tiempo_recurrencia_promedio = mean(Tiempo_hasta_recurrencia, na.rm = TRUE),
+    .groups = 'drop'
+  )
+
+print(caracteristicas_clusters)
+```
+
+## 3.6 Comparación de variables categóricas entre clusters
+
+```{r}
+# Frecuencia de recurrencia bioquímica por cluster
+table(almac_sangre_clusters$cluster, almac_sangre_clusters$Recurrencia_bioquimica)
+
+# Frecuencia de Gleason en biopsia por cluster
+table(almac_sangre_clusters$cluster, almac_sangre_clusters$Gleason_biopsia)
+```
+
+# 4 Interpretación de resultados
+
+Basándonos en el análisis realizado:
+
+## 4.1 Características de los Clusters
+
+**Cluster 1** (182 pacientes - 57.6%):
+
+-   **Perfil**: Grupo más numeroso, probablemente pacientes con enfermedad de menor riesgo
+
+-   **Recurrencia bioquímica**: 24 pacientes (13.2%) presentaron recurrencia
+
+-   **Gleason**: Mayoría con Gleason 0-6 (61.5%), seguido de Gleason 7 (29.7%)
+
+**Cluster 2** (28 pacientes - 8.9%):
+
+-   **Perfil**: Grupo de alto riesgo, menor cantidad de pacientes pero con peor pronóstico
+
+-   **Recurrencia bioquímica**: 10 pacientes (35.7%) presentaron recurrencia (más del doble que el cluster 1)
+
+-   **Gleason**: Distribución más balanceada, con mayor proporción de Gleason 8-10 (21.4%)
+
+**Cluster 3** (94 pacientes - 29.7%):
+
+-   **Perfil**: Grupo de riesgo intermedio
+
+-   **Recurrencia bioquímica**: 16 pacientes (17.0%) presentaron recurrencia
+
+-   **Gleason**: Predominio de Gleason 0-6 (61.7%), similar al cluster 1 pero con peores outcomes
+
+## 4.2 Implicaciones Clínicas
+
+1.  **Cluster 2 representa el grupo de mayor riesgo** con:
+
+    -   Mayor tasa de recurrencia bioquímica (35.7%)
+
+    -   Mayor proporción de Gleason alto (21.4%)
+
+    -   Podría beneficiarse de seguimiento más estrecho y terapias más agresivas
+
+2.  **Cluster 1 muestra el mejor perfil pronóstico** con:
+
+    -   Menor tasa de recurrencia (13.2%)
+
+    -   Mayor proporción de Gleason bajo (61.5%)
+
+3.  **Cluster 3 presenta características intermedias** que requieren evaluación individualizada
+
+## 4.3 Utilidad del Análisis de Clustering
+
+El análisis identificó **tres subgrupos naturales** de pacientes con cáncer de próstata que difieren en su perfil de riesgo y características patológicas. Esta estratificación podría ser útil para:
+
+-   **Personalizar estrategias de seguimiento**
+
+-   **Optimizar asignación de recursos**
+
+-   **Identificar pacientes que requieren intervenciones más intensivas**
+
+**Limitaciones**: Este es un análisis exploratorio y los resultados deben validarse en estudios prospectivos antes de su implementación clínica.

@@ -1,4 +1,4 @@
-# ESTADISTICA-UPSJB-GRUPO-almac_samgre
+# ESTADISTICA-UPSJB-GRUPO 01 -almac_samgre
 Repositorio del Grupo 1 que contiene todos los scripts, análisis y visualizaciones realizados en RStudio para el proyecto "Almac_Sangre".
 ## Contenido
 - **Scripts R (.R / .Rmd):** Código fuente para la limpieza, procesamiento y análisis de datos.

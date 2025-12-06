@@ -1,0 +1,317 @@
+Grupo_edad_GR,Rango_edad,Edad,Raza_afroamericana,Historia_familiar,Volumen_prostata,Volumen_tumoral,Estadio_T,Gleason_biopsia,Confinamiento_organo,PSA_preoperatorio,Terapia_previa,Unidades_transfundidas,Gleason_quirurgico,Terapia_adyuvante,Radioterapia_adyuvante,Recurrencia_bioquimica,Censor,Tiempo_hasta_recurrencia,BN_positivo
+Mayor,≥65 años,72,NO,NO,54,Alto,T1-T2a,Gleason 8-10,NO,14.08,SI,6,,NO,NO,SI,NO,2.67,NO
+Mayor,≥65 años,74,NO,NO,43.2,Alto,T2b-T3,Gleason 7,SI,10.5,NO,2,Gleason 7,NO,NO,SI,NO,47.63,NO
+Mayor,≥65 años,68,NO,NO,102.7,Bajo,T1-T2a,Gleason 8-10,SI,6.98,SI,1,,NO,NO,NO,SI,14.1,NO
+Mayor,≥65 años,66,NO,NO,46,Bajo,T1-T2a,Gleason 0-6,SI,4.4,NO,2,Gleason 7,NO,NO,NO,SI,59.47,NO
+Intermedio,50-64 años,63,NO,NO,60,Medio,T1-T2a,Gleason 7,SI,21.4,NO,3,Gleason 7,NO,NO,NO,SI,1.23,NO
+Mayor,≥65 años,65,NO,NO,45.9,Medio,T1-T2a,Gleason 0-6,NO,5.1,NO,1,Gleason 7,NO,NO,NO,SI,74.7,NO
+Mayor,≥65 años,66,SI,NO,42.6,Medio,T1-T2a,Gleason 0-6,SI,6.03,NO,2,Gleason 7,NO,NO,NO,SI,13.87,NO
+Mayor,≥65 años,67,NO,NO,40.7,Alto,T1-T2a,Gleason 0-6,NO,8.7,NO,4,Gleason 7,NO,NO,SI,NO,8.37,NO
+Intermedio,50-64 años,64,NO,NO,45,Medio,T1-T2a,Gleason 0-6,SI,3.83,NO,1,Gleason 7,NO,NO,NO,SI,48.59,NO
+Intermedio,50-64 años,63,SI,NO,67.6,Medio,T1-T2a,Gleason 7,SI,7.98,NO,2,Gleason 7,NO,NO,NO,SI,22.63,NO
+Intermedio,50-64 años,59,NO,NO,47.2,Bajo,T1-T2a,Gleason 7,SI,4.5,NO,2,Gleason 7,NO,NO,NO,SI,4.63,NO
+Intermedio,50-64 años,58,NO,NO,37.5,Alto,T1-T2a,Gleason 0-6,SI,5.3,NO,2,Gleason 7,NO,NO,NO,SI,46.47,NO
+Intermedio,50-64 años,56,NO,NO,51,Medio,T1-T2a,Gleason 0-6,SI,2.7,NO,2,Gleason 0-6,NO,NO,NO,SI,91.15,NO
+Mayor,≥65 años,73,NO,NO,38.6,Medio,T2b-T3,Gleason 7,NO,30.6,SI,4,,NO,NO,NO,SI,10.77,NO
+Intermedio,50-64 años,60,SI,NO,54,Medio,T1-T2a,Gleason 7,SI,10.4,NO,2,Gleason 7,NO,NO,NO,SI,5.09,NO
+Mayor,≥65 años,68,NO,NO,41,Medio,T1-T2a,Gleason 7,SI,5.6,SI,4,,NO,NO,NO,SI,83.87,NO
+Intermedio,50-64 años,62,NO,NO,77,Bajo,,Gleason 0-6,SI,4.3,NO,5,Gleason 0-6,NO,NO,NO,SI,8.3,NO
+Intermedio,50-64 años,61,SI,NO,76,Medio,T1-T2a,Gleason 0-6,SI,7,NO,4,Gleason 0-6,NO,NO,NO,SI,71.57,NO
+Intermedio,50-64 años,60,SI,NO,63,Medio,T1-T2a,Gleason 7,SI,4.2,NO,2,Gleason 0-6,NO,NO,NO,SI,89.36,NO
+Mayor,≥65 años,65,NO,NO,113,Medio,T1-T2a,Gleason 0-6,SI,8.48,NO,1,Gleason 0-6,NO,NO,NO,SI,29.3,NO
+Mayor,≥65 años,67,NO,NO,54.2,Alto,T1-T2a,Gleason 7,NO,5.3,NO,4,Gleason 8-10,NO,NO,NO,SI,83.83,NO
+Intermedio,50-64 años,64,NO,NO,42,Medio,T1-T2a,Gleason 7,NO,5.4,SI,2,,NO,NO,SI,NO,47.6,NO
+Intermedio,50-64 años,62,SI,NO,29.3,Medio,T1-T2a,Gleason 0-6,SI,4.1,NO,2,Gleason 0-6,NO,NO,NO,SI,90.55,NO
+Intermedio,50-64 años,58,NO,SI,24,Medio,,Gleason 0-6,SI,5,NO,2,Gleason 7,NO,NO,NO,SI,7.49,NO
+Mayor,≥65 años,70,NO,NO,92.3,Bajo,T1-T2a,Gleason 7,SI,5.7,NO,2,Gleason 0-6,NO,NO,NO,SI,58.63,NO
+Joven,<50 años,40,NO,NO,29.5,Bajo,T1-T2a,Gleason 0-6,SI,1.48,NO,2,Gleason 7,NO,NO,NO,SI,21.13,NO
+Mayor,≥65 años,70,NO,NO,47.5,Medio,T1-T2a,Gleason 0-6,SI,6.7,NO,2,Gleason 7,NO,NO,NO,SI,41.59,NO
+Mayor,≥65 años,68,NO,NO,48,Medio,T1-T2a,Gleason 0-6,NO,2.9,NO,1,Gleason 7,NO,NO,NO,SI,1.13,NO
+Mayor,≥65 años,68,NO,SI,61,Alto,T2b-T3,Gleason 8-10,NO,29,SI,4,,SI,NO,NO,SI,41,SI
+Intermedio,50-64 años,56,NO,NO,70.8,Medio,T1-T2a,Gleason 7,SI,6.9,NO,3,Gleason 7,NO,NO,NO,SI,47.3,NO
+Mayor,≥65 años,69,SI,NO,65,Medio,T1-T2a,Gleason 7,SI,7.2,NO,5,Gleason 7,NO,NO,SI,NO,46.22,NO
+Intermedio,50-64 años,62,SI,NO,36.8,Medio,T1-T2a,Gleason 8-10,NO,5.58,NO,2,Gleason 8-10,NO,NO,NO,SI,19.83,NO
+Intermedio,50-64 años,50,SI,NO,51.7,Alto,T1-T2a,Gleason 0-6,SI,6.38,NO,1,Gleason 7,NO,NO,NO,SI,38.68,NO
+Mayor,≥65 años,74,SI,NO,58,Medio,T1-T2a,Gleason 0-6,SI,8.1,NO,2,Gleason 8-10,NO,NO,NO,SI,55.49,NO
+Intermedio,50-64 años,64,NO,NO,66,Medio,T1-T2a,Gleason 0-6,SI,5.5,NO,2,Gleason 7,NO,NO,NO,SI,102.2,NO
+Mayor,≥65 años,71,NO,NO,63,Bajo,T1-T2a,Gleason 0-6,SI,5.3,NO,4,Gleason 7,NO,NO,NO,SI,37.13,NO
+Intermedio,50-64 años,60,NO,NO,69,Bajo,T1-T2a,Gleason 0-6,SI,5.7,NO,2,Gleason 7,NO,NO,NO,SI,65.69,NO
+Intermedio,50-64 años,59,NO,NO,43.4,Bajo,T1-T2a,Gleason 0-6,SI,5.4,NO,1,Gleason 0-6,NO,NO,NO,SI,52.07,NO
+Mayor,≥65 años,72,NO,SI,38.5,Medio,T1-T2a,Gleason 8-10,SI,9.05,NO,2,Gleason 7,NO,NO,NO,SI,46.85,NO
+Mayor,≥65 años,70,NO,SI,46,Medio,T1-T2a,Gleason 7,NO,4.9,NO,8,Gleason 7,NO,NO,NO,SI,4.1,NO
+Intermedio,50-64 años,60,NO,NO,38.2,Medio,T2b-T3,Gleason 7,NO,5,NO,1,Gleason 7,NO,NO,NO,SI,1.07,NO
+Mayor,≥65 años,72,NO,NO,56,Medio,T1-T2a,Gleason 0-6,SI,2.09,NO,2,Gleason 7,NO,NO,NO,SI,5.43,NO
+Joven,<50 años,44,NO,NO,35,Medio,T1-T2a,Gleason 0-6,SI,5.5,NO,2,Gleason 0-6,NO,NO,NO,SI,41.6,NO
+Intermedio,50-64 años,62,NO,NO,52.3,Medio,T1-T2a,Gleason 0-6,NO,4.1,NO,19,Gleason 7,NO,NO,NO,SI,1.97,NO
+Intermedio,50-64 años,62,NO,SI,,Medio,T1-T2a,Gleason 7,SI,4.1,NO,1,Gleason 7,NO,NO,NO,SI,9.67,NO
+Intermedio,50-64 años,63,SI,NO,47.9,Alto,T1-T2a,Gleason 8-10,NO,15.7,SI,2,,NO,NO,SI,NO,7.13,NO
+Mayor,≥65 años,70,SI,NO,73,Alto,T1-T2a,Gleason 7,NO,6.2,NO,3,Gleason 7,NO,NO,SI,NO,9.77,NO
+Mayor,≥65 años,67,NO,NO,66.5,Medio,T1-T2a,Gleason 0-6,SI,5.2,NO,1,Gleason 7,NO,NO,NO,SI,47.92,NO
+Intermedio,50-64 años,62,SI,NO,74,Bajo,T1-T2a,Gleason 0-6,SI,6.27,NO,3,Gleason 0-6,NO,NO,NO,SI,13.9,NO
+Mayor,≥65 años,69,NO,NO,57.2,Alto,T1-T2a,Gleason 0-6,SI,5,NO,1,Gleason 7,NO,NO,NO,SI,33.83,NO
+Mayor,≥65 años,65,SI,NO,43,,T1-T2a,Gleason 0-6,NO,14.9,NO,9,Gleason 0-6,NO,NO,SI,NO,10.93,NO
+Intermedio,50-64 años,60,NO,NO,64.1,Bajo,T1-T2a,Gleason 8-10,NO,4.4,SI,4,,NO,NO,NO,SI,1.9,NO
+Intermedio,50-64 años,62,NO,NO,63,Medio,T1-T2a,Gleason 0-6,NO,5.2,NO,7,Gleason 7,NO,NO,NO,SI,69.07,NO
+Intermedio,50-64 años,59,NO,SI,237,Bajo,T1-T2a,Gleason 0-6,SI,9,NO,5,Gleason 0-6,NO,NO,NO,SI,90.77,NO
+Mayor,≥65 años,67,NO,NO,70,Bajo,,Gleason 0-6,SI,5.92,NO,2,Gleason 0-6,NO,NO,NO,SI,14.82,NO
+Mayor,≥65 años,75,NO,NO,90.2,Bajo,,Gleason 0-6,SI,4.3,NO,1,Gleason 0-6,NO,NO,NO,SI,17.2,NO
+Mayor,≥65 años,65,NO,NO,78.9,Alto,T1-T2a,Gleason 0-6,SI,15.7,NO,2,Gleason 0-6,NO,NO,NO,SI,80.2,NO
+Intermedio,50-64 años,56,NO,NO,68,Bajo,T1-T2a,Gleason 8-10,SI,5.2,NO,2,Gleason 7,NO,NO,NO,SI,67.87,NO
+Intermedio,50-64 años,57,NO,SI,89,Alto,T1-T2a,Gleason 0-6,NO,14,NO,1,Gleason 7,NO,NO,NO,SI,94.1,NO
+Intermedio,50-64 años,60,NO,NO,40,Alto,T1-T2a,Gleason 7,SI,8.99,NO,1,Gleason 7,NO,NO,NO,SI,3.83,NO
+Mayor,≥65 años,69,SI,NO,96,Bajo,T1-T2a,Gleason 0-6,SI,4.2,NO,2,Gleason 7,NO,NO,NO,SI,15.67,NO
+Intermedio,50-64 años,61,NO,NO,39.8,Alto,T1-T2a,Gleason 0-6,NO,13.5,NO,3,Gleason 7,NO,NO,SI,NO,35.37,NO
+Intermedio,50-64 años,57,NO,SI,31.3,Medio,T1-T2a,Gleason 7,NO,4.7,NO,2,Gleason 7,NO,NO,NO,SI,7.57,NO
+Intermedio,50-64 años,64,NO,NO,68,Alto,T1-T2a,Gleason 0-6,SI,5.1,NO,2,Gleason 7,NO,NO,NO,SI,45.87,NO
+Intermedio,50-64 años,60,NO,NO,46,Medio,T1-T2a,Gleason 0-6,SI,6.8,NO,2,Gleason 0-6,NO,NO,NO,SI,16.13,NO
+Intermedio,50-64 años,64,NO,SI,60.1,Bajo,T1-T2a,Gleason 7,SI,5.87,NO,2,Gleason 7,NO,NO,NO,SI,41.09,NO
+Intermedio,50-64 años,55,NO,NO,37.5,Bajo,T1-T2a,Gleason 7,SI,7.4,NO,2,Gleason 0-6,NO,NO,NO,SI,63.97,NO
+Joven,<50 años,47,NO,SI,48,Medio,T1-T2a,Gleason 0-6,SI,5.8,NO,3,Gleason 7,NO,NO,NO,SI,6.52,NO
+Intermedio,50-64 años,64,SI,NO,44,Bajo,T1-T2a,Gleason 0-6,SI,5.3,NO,3,Gleason 7,NO,NO,NO,SI,10.83,NO
+Intermedio,50-64 años,55,NO,SI,34,Alto,T1-T2a,Gleason 0-6,SI,4.7,NO,2,Gleason 7,NO,NO,NO,SI,47,NO
+Mayor,≥65 años,74,NO,SI,32,Medio,T1-T2a,Gleason 0-6,SI,4.7,NO,2,Gleason 0-6,NO,NO,NO,SI,13.8,NO
+Intermedio,50-64 años,56,NO,NO,34,Medio,T1-T2a,Gleason 0-6,SI,6.5,NO,4,Gleason 0-6,NO,NO,NO,SI,63.67,NO
+Mayor,≥65 años,72,NO,SI,115,Medio,T1-T2a,Gleason 7,SI,10.1,NO,4,Gleason 8-10,NO,NO,SI,NO,14.87,NO
+Mayor,≥65 años,72,NO,SI,99.8,Medio,T1-T2a,Gleason 0-6,SI,5.4,NO,1,Gleason 0-6,NO,NO,NO,SI,93.8,NO
+Mayor,≥65 años,65,NO,NO,104.6,Medio,T1-T2a,Gleason 0-6,NO,13.7,NO,2,Gleason 7,NO,NO,NO,SI,101.77,NO
+Mayor,≥65 años,68,SI,SI,53,Medio,T1-T2a,Gleason 0-6,NO,20.7,NO,2,Gleason 7,NO,NO,NO,SI,80.73,NO
+Mayor,≥65 años,66,NO,NO,51.2,,T1-T2a,Gleason 0-6,SI,5.9,NO,6,Gleason 7,NO,NO,SI,NO,48.33,SI
+Intermedio,50-64 años,59,SI,NO,66,Medio,T1-T2a,Gleason 0-6,SI,8.7,NO,2,Gleason 7,NO,NO,NO,SI,71.56,NO
+Intermedio,50-64 años,62,NO,NO,44,Bajo,T1-T2a,Gleason 0-6,SI,6.3,NO,2,Gleason 0-6,NO,NO,NO,SI,76.33,NO
+Intermedio,50-64 años,53,SI,NO,43.8,Medio,T1-T2a,Gleason 0-6,SI,4.2,NO,2,Gleason 7,NO,NO,NO,SI,71.5,NO
+Intermedio,50-64 años,58,SI,NO,43,Alto,T1-T2a,Gleason 7,NO,15.9,NO,2,Gleason 7,SI,NO,NO,SI,13.03,SI
+Mayor,≥65 años,74,NO,NO,42,Alto,T1-T2a,Gleason 0-6,NO,4.3,NO,2,Gleason 8-10,NO,NO,NO,SI,5.2,NO
+Intermedio,50-64 años,50,NO,NO,67.5,Bajo,T1-T2a,Gleason 0-6,SI,5.85,NO,10,Gleason 0-6,NO,NO,NO,SI,35.39,NO
+Mayor,≥65 años,69,NO,NO,35,Bajo,T1-T2a,Gleason 8-10,SI,5.7,SI,2,,NO,NO,NO,SI,1.67,NO
+Joven,<50 años,48,SI,NO,45,Medio,T1-T2a,Gleason 0-6,SI,6,SI,2,,NO,NO,SI,NO,5.77,SI
+Intermedio,50-64 años,64,SI,NO,43,Medio,T1-T2a,Gleason 0-6,NO,4.7,NO,2,Gleason 7,NO,NO,NO,SI,0.4,NO
+Intermedio,50-64 años,60,NO,SI,46.2,Medio,T1-T2a,Gleason 0-6,NO,5.9,NO,2,Gleason 7,NO,NO,NO,SI,58.57,NO
+Intermedio,50-64 años,62,NO,NO,42,,T1-T2a,Gleason 0-6,SI,3.5,NO,1,Gleason 0-6,NO,NO,NO,SI,38.47,NO
+Mayor,≥65 años,70,NO,NO,60.8,Medio,T1-T2a,Gleason 0-6,SI,6.3,SI,2,,NO,NO,NO,SI,44.17,NO
+Intermedio,50-64 años,56,NO,NO,49,Medio,T1-T2a,Gleason 0-6,NO,10,NO,2,Gleason 7,NO,NO,NO,SI,73.5,NO
+Mayor,≥65 años,70,NO,NO,64,Medio,T1-T2a,Gleason 7,NO,6.1,NO,2,Gleason 7,NO,NO,SI,NO,1.7,NO
+Mayor,≥65 años,68,NO,NO,47.7,Medio,T2b-T3,Gleason 8-10,NO,4.17,SI,1,,NO,NO,NO,SI,2.4,NO
+Mayor,≥65 años,70,NO,NO,35.1,Alto,T2b-T3,Gleason 8-10,NO,6.2,SI,1,,SI,NO,SI,NO,44.73,SI
+Intermedio,50-64 años,57,SI,NO,36.7,Medio,T1-T2a,Gleason 0-6,SI,10,NO,2,Gleason 7,NO,NO,NO,SI,28.9,NO
+Mayor,≥65 años,65,NO,NO,,Bajo,T1-T2a,Gleason 0-6,SI,4.1,NO,2,Gleason 0-6,NO,NO,NO,SI,74.27,NO
+Intermedio,50-64 años,61,NO,NO,49,Bajo,T1-T2a,Gleason 0-6,SI,4.9,NO,2,Gleason 0-6,NO,NO,NO,SI,3.37,NO
+Intermedio,50-64 años,50,NO,NO,52.2,Alto,T1-T2a,Gleason 7,SI,29.7,NO,4,Gleason 7,NO,NO,NO,SI,73.9,NO
+Intermedio,50-64 años,55,NO,NO,82.3,Bajo,T1-T2a,Gleason 0-6,SI,4.1,SI,6,,NO,NO,NO,SI,48.33,NO
+Intermedio,50-64 años,58,NO,NO,57.5,Medio,T1-T2a,Gleason 0-6,SI,7.7,NO,2,Gleason 7,NO,NO,NO,SI,29.53,NO
+Intermedio,50-64 años,57,NO,NO,,Medio,T1-T2a,Gleason 0-6,SI,4.02,NO,2,Gleason 7,NO,NO,NO,SI,12.49,NO
+Intermedio,50-64 años,59,NO,NO,24.8,Alto,T1-T2a,Gleason 7,NO,5,SI,2,,NO,NO,SI,NO,18.4,NO
+Intermedio,50-64 años,60,NO,NO,48,Bajo,T1-T2a,Gleason 0-6,SI,4.2,NO,2,Gleason 0-6,NO,NO,NO,SI,86.47,NO
+Intermedio,50-64 años,56,NO,NO,201.5,Bajo,,Gleason 0-6,SI,9.32,NO,13,Gleason 0-6,NO,NO,NO,SI,23.73,NO
+Mayor,≥65 años,71,NO,NO,102,Medio,T1-T2a,Gleason 0-6,SI,11.9,NO,2,Gleason 7,NO,NO,NO,SI,82.43,NO
+Mayor,≥65 años,72,NO,NO,90.1,Medio,T1-T2a,Gleason 0-6,NO,8.3,NO,2,Gleason 7,NO,NO,NO,SI,83.02,NO
+Intermedio,50-64 años,58,SI,NO,35.1,Medio,T1-T2a,Gleason 0-6,SI,4.6,NO,2,Gleason 0-6,NO,NO,SI,NO,1.67,NO
+Mayor,≥65 años,78,NO,NO,135,Bajo,T1-T2a,Gleason 0-6,SI,9,NO,3,Gleason 0-6,NO,NO,SI,NO,4.23,NO
+Intermedio,50-64 años,56,NO,SI,47.1,Bajo,T1-T2a,Gleason 0-6,SI,7.2,NO,1,Gleason 0-6,NO,NO,NO,SI,23.17,NO
+Intermedio,50-64 años,54,NO,NO,42,Medio,T1-T2a,Gleason 7,SI,4.9,NO,2,Gleason 7,NO,NO,NO,SI,12.23,NO
+Intermedio,50-64 años,52,NO,NO,43.2,Medio,T1-T2a,Gleason 0-6,SI,7,NO,4,Gleason 7,NO,NO,NO,SI,49.07,NO
+Intermedio,50-64 años,64,NO,NO,39,Bajo,T1-T2a,Gleason 0-6,SI,,NO,2,Gleason 0-6,NO,NO,NO,SI,66.69,NO
+Mayor,≥65 años,67,NO,NO,65.7,Medio,T1-T2a,Gleason 7,NO,5,NO,2,Gleason 7,NO,NO,NO,SI,99.47,NO
+Intermedio,50-64 años,62,NO,NO,52.1,Bajo,T1-T2a,Gleason 0-6,SI,7.6,NO,2,Gleason 7,NO,NO,NO,SI,42.62,NO
+Intermedio,50-64 años,62,NO,NO,46,Medio,T1-T2a,Gleason 0-6,SI,5.4,NO,2,Gleason 7,NO,NO,NO,SI,86.7,NO
+Mayor,≥65 años,71,NO,NO,,Bajo,T1-T2a,Gleason 0-6,SI,6.3,NO,2,Gleason 7,NO,NO,NO,SI,11.57,NO
+Intermedio,50-64 años,60,SI,NO,67,Alto,T2b-T3,Gleason 7,NO,6.3,NO,1,Gleason 7,NO,NO,NO,SI,95.25,NO
+Mayor,≥65 años,66,NO,NO,63,Medio,T1-T2a,Gleason 0-6,SI,6.8,NO,4,Gleason 0-6,NO,NO,NO,SI,63.52,NO
+Intermedio,50-64 años,59,NO,SI,52,Medio,T1-T2a,Gleason 8-10,SI,15.6,NO,2,Gleason 8-10,NO,NO,SI,NO,13.3,NO
+Intermedio,50-64 años,63,NO,NO,56.6,Medio,T1-T2a,Gleason 0-6,SI,4.7,NO,1,Gleason 0-6,NO,NO,NO,SI,13.77,NO
+Intermedio,50-64 años,61,NO,NO,65,Alto,T1-T2a,Gleason 0-6,NO,14.2,NO,2,Gleason 7,NO,NO,NO,SI,10.47,NO
+Intermedio,50-64 años,51,NO,NO,58,Alto,T2b-T3,Gleason 8-10,NO,24.9,NO,1,Gleason 8-10,NO,NO,SI,NO,1.43,NO
+Intermedio,50-64 años,58,NO,NO,63.4,Medio,T1-T2a,Gleason 0-6,SI,4.89,NO,4,Gleason 7,NO,NO,NO,SI,22.26,NO
+Intermedio,50-64 años,63,NO,NO,60.4,Alto,T1-T2a,Gleason 7,NO,9.1,NO,2,Gleason 7,NO,NO,NO,SI,70.9,NO
+Mayor,≥65 años,68,NO,NO,42.1,Medio,T1-T2a,Gleason 7,SI,6.18,NO,2,Gleason 7,NO,NO,NO,SI,14.23,NO
+Intermedio,50-64 años,58,NO,NO,50.6,Bajo,T1-T2a,Gleason 0-6,SI,4.2,NO,4,Gleason 0-6,NO,NO,NO,SI,17.03,NO
+Intermedio,50-64 años,62,NO,NO,59,Medio,T1-T2a,Gleason 7,SI,8.2,NO,2,Gleason 7,NO,NO,NO,SI,20.3,NO
+Intermedio,50-64 años,56,NO,NO,56,Alto,T1-T2a,Gleason 7,NO,11.9,NO,2,Gleason 7,NO,NO,NO,SI,101.7,NO
+Intermedio,50-64 años,64,NO,NO,60,Medio,T1-T2a,Gleason 0-6,SI,1.8,NO,4,Gleason 0-6,NO,NO,NO,SI,103.6,NO
+Intermedio,50-64 años,53,NO,NO,64,Medio,T1-T2a,Gleason 0-6,SI,5.8,NO,1,Gleason 0-6,NO,NO,NO,SI,24.27,NO
+Intermedio,50-64 años,56,NO,NO,47,Medio,T1-T2a,Gleason 0-6,SI,8.9,NO,4,Gleason 0-6,NO,NO,NO,SI,79.37,NO
+Mayor,≥65 años,69,NO,NO,29,Alto,T2b-T3,Gleason 7,SI,27,SI,2,,NO,NO,SI,NO,43.77,NO
+Intermedio,50-64 años,64,NO,SI,42,Alto,T1-T2a,Gleason 0-6,NO,5.6,NO,2,Gleason 7,NO,NO,SI,NO,1.77,NO
+Mayor,≥65 años,68,NO,SI,67,Medio,T1-T2a,Gleason 7,SI,13.2,NO,2,Gleason 7,NO,NO,NO,SI,25.3,NO
+Mayor,≥65 años,65,NO,NO,66.4,Medio,T1-T2a,Gleason 0-6,SI,19.7,SI,1,,NO,NO,NO,SI,57.83,NO
+Intermedio,50-64 años,63,NO,NO,33,Medio,T1-T2a,Gleason 7,SI,8.9,NO,1,Gleason 7,NO,NO,NO,SI,68.57,NO
+Intermedio,50-64 años,58,NO,SI,51,Medio,T1-T2a,Gleason 0-6,SI,3.9,NO,1,Gleason 7,NO,NO,NO,SI,58.73,NO
+Mayor,≥65 años,71,NO,NO,43.4,Alto,T1-T2a,Gleason 7,NO,5.7,NO,2,Gleason 7,NO,NO,NO,SI,88.25,NO
+Intermedio,50-64 años,62,NO,NO,105,Medio,T1-T2a,Gleason 0-6,SI,5.2,NO,1,Gleason 0-6,NO,NO,NO,SI,41.57,NO
+Intermedio,50-64 años,64,NO,NO,37.5,Alto,T1-T2a,Gleason 7,SI,9.9,NO,2,Gleason 7,NO,NO,NO,SI,86.79,NO
+Mayor,≥65 años,70,NO,SI,56,Alto,T2b-T3,Gleason 7,NO,4.65,NO,2,Gleason 7,NO,NO,NO,SI,11.2,NO
+Mayor,≥65 años,68,NO,NO,96.3,Bajo,T1-T2a,Gleason 0-6,SI,6.2,NO,1,Gleason 7,NO,NO,NO,SI,67.76,NO
+Intermedio,50-64 años,63,NO,NO,48,Bajo,T1-T2a,Gleason 7,SI,6.7,NO,1,Gleason 0-6,NO,NO,NO,SI,83.07,NO
+Intermedio,50-64 años,64,NO,NO,57.6,Medio,T1-T2a,Gleason 8-10,SI,7,SI,2,,NO,NO,NO,SI,39.37,NO
+Intermedio,50-64 años,58,NO,NO,36.6,Medio,T1-T2a,Gleason 7,SI,5,NO,4,Gleason 7,NO,NO,NO,SI,9.82,NO
+Intermedio,50-64 años,60,NO,NO,,Medio,T1-T2a,Gleason 0-6,SI,4.96,NO,3,Gleason 7,NO,NO,NO,SI,1.3,NO
+Intermedio,50-64 años,56,NO,SI,68,Bajo,T1-T2a,Gleason 0-6,SI,8.3,NO,5,Gleason 0-6,NO,NO,NO,SI,65,NO
+Intermedio,50-64 años,62,NO,SI,113,Bajo,T1-T2a,Gleason 0-6,SI,5.4,NO,3,Gleason 0-6,NO,NO,NO,SI,95.73,NO
+Intermedio,50-64 años,51,NO,SI,51,Bajo,T1-T2a,Gleason 0-6,SI,4.4,NO,2,Gleason 7,NO,NO,NO,SI,84.87,NO
+Intermedio,50-64 años,57,NO,SI,41,Alto,T1-T2a,Gleason 7,SI,6.6,NO,2,Gleason 7,NO,NO,NO,SI,91.39,NO
+Intermedio,50-64 años,51,SI,NO,40.1,Medio,T1-T2a,Gleason 0-6,SI,5.1,SI,2,,NO,NO,NO,SI,37.03,SI
+Mayor,≥65 años,66,NO,NO,99,Alto,T1-T2a,Gleason 7,NO,22.9,NO,2,Gleason 7,NO,NO,NO,SI,54.27,NO
+Intermedio,50-64 años,54,NO,SI,53.6,Medio,T1-T2a,Gleason 0-6,SI,9.75,NO,2,Gleason 7,NO,NO,NO,SI,1.27,NO
+Intermedio,50-64 años,56,NO,NO,20.9,Alto,T1-T2a,Gleason 7,NO,5.1,SI,2,,NO,NO,SI,NO,24.6,NO
+Intermedio,50-64 años,56,NO,NO,48.5,Medio,T1-T2a,Gleason 0-6,SI,5.6,NO,1,Gleason 0-6,NO,NO,NO,SI,54,NO
+Joven,<50 años,48,NO,SI,37,Medio,T1-T2a,Gleason 0-6,NO,6.6,NO,2,Gleason 0-6,NO,NO,NO,SI,53.07,NO
+Intermedio,50-64 años,58,NO,NO,37,Alto,T1-T2a,Gleason 7,SI,4.99,NO,2,Gleason 8-10,NO,NO,NO,SI,5.03,NO
+Intermedio,50-64 años,64,SI,NO,108.2,Alto,T1-T2a,Gleason 0-6,SI,18,NO,4,Gleason 7,NO,NO,NO,SI,1.5,NO
+Mayor,≥65 años,66,NO,NO,75,Medio,T1-T2a,Gleason 0-6,SI,5,NO,1,Gleason 0-6,NO,NO,NO,SI,37.97,NO
+Intermedio,50-64 años,63,NO,NO,38,Alto,T1-T2a,Gleason 0-6,NO,6.2,NO,2,Gleason 7,NO,NO,NO,SI,91.07,NO
+Mayor,≥65 años,69,NO,NO,41,Medio,T1-T2a,Gleason 0-6,SI,7.8,NO,2,Gleason 7,NO,NO,NO,SI,98.6,NO
+Mayor,≥65 años,68,NO,NO,72.8,Alto,T1-T2a,Gleason 8-10,NO,14.4,NO,6,Gleason 8-10,NO,NO,SI,NO,1.47,NO
+Intermedio,50-64 años,55,NO,NO,73,Medio,T1-T2a,Gleason 0-6,SI,2.9,NO,5,Gleason 7,NO,NO,NO,SI,59.37,NO
+Intermedio,50-64 años,56,NO,SI,50.7,Bajo,T1-T2a,Gleason 7,SI,4,NO,2,Gleason 7,NO,NO,NO,SI,3.93,NO
+Intermedio,50-64 años,55,NO,NO,40,Medio,T1-T2a,Gleason 0-6,SI,4.4,NO,2,Gleason 7,NO,NO,SI,NO,68.07,NO
+Intermedio,50-64 años,64,NO,NO,89,Medio,T1-T2a,Gleason 0-6,NO,6.3,NO,1,Gleason 0-6,NO,NO,NO,SI,64.55,NO
+Mayor,≥65 años,70,NO,NO,75.6,Medio,T1-T2a,Gleason 0-6,NO,6.8,NO,2,Gleason 7,NO,NO,NO,SI,15.37,NO
+Intermedio,50-64 años,50,NO,NO,19.4,Alto,T2b-T3,Gleason 7,NO,19.6,SI,2,,NO,NO,SI,NO,26.7,SI
+Intermedio,50-64 años,57,NO,NO,46,Medio,T1-T2a,Gleason 7,NO,4.1,NO,1,Gleason 7,NO,NO,NO,SI,81.63,NO
+Intermedio,50-64 años,64,NO,NO,37,Alto,T2b-T3,Gleason 7,NO,3.7,SI,1,,NO,NO,NO,SI,33.8,SI
+Mayor,≥65 años,67,NO,SI,36.1,Alto,T1-T2a,Gleason 0-6,NO,2.5,SI,1,,NO,NO,NO,SI,74.5,NO
+Mayor,≥65 años,72,SI,NO,53.9,Medio,T1-T2a,Gleason 7,SI,11.9,NO,2,Gleason 7,NO,NO,SI,NO,30.7,NO
+Intermedio,50-64 años,64,NO,NO,65,Alto,T1-T2a,Gleason 0-6,SI,6.3,NO,2,Gleason 7,NO,NO,NO,SI,14,NO
+Intermedio,50-64 años,53,NO,SI,34,Alto,T2b-T3,Gleason 7,SI,4.8,NO,2,Gleason 7,NO,NO,NO,SI,57.23,SI
+Intermedio,50-64 años,62,SI,SI,82,Medio,T2b-T3,Gleason 7,NO,5.6,NO,2,Gleason 7,NO,NO,NO,SI,0.27,NO
+Mayor,≥65 años,65,NO,NO,78.7,Medio,T1-T2a,Gleason 0-6,NO,5.3,NO,2,Gleason 7,NO,NO,NO,SI,51.43,NO
+Intermedio,50-64 años,62,NO,NO,95,Bajo,T1-T2a,Gleason 0-6,SI,13.6,NO,1,Gleason 0-6,NO,NO,NO,SI,70.13,NO
+Intermedio,50-64 años,59,SI,NO,67,Alto,T2b-T3,Gleason 8-10,NO,8.2,NO,1,Gleason 7,NO,NO,SI,NO,12.6,NO
+Intermedio,50-64 años,54,SI,NO,35,Bajo,T1-T2a,Gleason 0-6,SI,5.1,SI,1,,NO,NO,NO,SI,64.92,NO
+Intermedio,50-64 años,57,NO,NO,41.2,Bajo,T1-T2a,Gleason 0-6,SI,5.1,NO,2,Gleason 7,NO,NO,NO,SI,39.03,NO
+Mayor,≥65 años,66,NO,SI,37.6,Medio,T1-T2a,Gleason 0-6,NO,5.2,NO,2,Gleason 0-6,NO,NO,NO,SI,33.47,NO
+Mayor,≥65 años,66,NO,NO,51.6,Alto,T1-T2a,Gleason 7,NO,8.1,NO,2,Gleason 7,NO,NO,NO,SI,68.63,NO
+Mayor,≥65 años,67,NO,NO,37,Medio,T1-T2a,Gleason 7,SI,7.1,NO,2,Gleason 7,NO,NO,SI,NO,5.53,NO
+Intermedio,50-64 años,62,NO,NO,58,Medio,T1-T2a,Gleason 0-6,SI,3.88,NO,2,Gleason 7,NO,NO,NO,SI,10.27,NO
+Intermedio,50-64 años,51,NO,SI,31.3,Medio,T1-T2a,Gleason 0-6,SI,11.06,NO,2,Gleason 7,NO,NO,NO,SI,0.73,NO
+Mayor,≥65 años,68,NO,NO,64,Medio,T1-T2a,Gleason 0-6,SI,8.4,NO,2,Gleason 7,NO,NO,NO,SI,70.52,SI
+Intermedio,50-64 años,56,SI,NO,46.7,Alto,T1-T2a,Gleason 0-6,SI,5.8,NO,1,Gleason 7,NO,NO,NO,SI,1.9,NO
+Mayor,≥65 años,79,NO,NO,72,Medio,T1-T2a,Gleason 0-6,NO,8.1,NO,2,Gleason 7,NO,NO,SI,NO,37.43,NO
+Intermedio,50-64 años,64,NO,NO,56,Alto,T2b-T3,Gleason 7,NO,10.07,NO,2,Gleason 8-10,NO,NO,SI,NO,63.53,NO
+Intermedio,50-64 años,50,NO,NO,32,Medio,T1-T2a,Gleason 0-6,SI,5.3,NO,1,Gleason 0-6,NO,NO,NO,SI,61.77,NO
+Intermedio,50-64 años,55,SI,NO,31.6,Medio,T1-T2a,Gleason 0-6,NO,15,NO,2,Gleason 7,NO,NO,NO,SI,52,NO
+Intermedio,50-64 años,61,NO,NO,55,Medio,T1-T2a,Gleason 0-6,SI,5.6,NO,2,Gleason 0-6,NO,NO,SI,NO,,NO
+Intermedio,50-64 años,60,NO,NO,28,Medio,T2b-T3,Gleason 7,NO,7.9,SI,1,,NO,NO,SI,NO,9.57,NO
+Mayor,≥65 años,65,NO,NO,38,Bajo,T1-T2a,Gleason 0-6,SI,5.4,NO,14,Gleason 7,NO,NO,NO,SI,42.63,NO
+Intermedio,50-64 años,60,NO,NO,42,Alto,T2b-T3,Gleason 7,NO,22.3,SI,1,,SI,NO,NO,SI,32.67,SI
+Intermedio,50-64 años,64,NO,NO,60,Medio,T1-T2a,Gleason 0-6,SI,5.7,NO,2,Gleason 0-6,NO,NO,NO,SI,50.77,NO
+Mayor,≥65 años,68,NO,NO,67,Bajo,T1-T2a,Gleason 0-6,SI,6.8,NO,1,Gleason 0-6,NO,NO,NO,SI,56.43,NO
+Intermedio,50-64 años,51,NO,NO,28,Medio,T1-T2a,Gleason 0-6,SI,2.8,NO,1,Gleason 0-6,NO,NO,NO,SI,58.6,SI
+Intermedio,50-64 años,58,NO,NO,33,Medio,T1-T2a,Gleason 0-6,SI,6.8,NO,2,Gleason 7,NO,NO,NO,SI,24.37,NO
+Joven,<50 años,49,NO,NO,28.9,Alto,T1-T2a,Gleason 0-6,SI,8.1,NO,6,Gleason 7,NO,NO,SI,NO,23.13,NO
+Intermedio,50-64 años,51,NO,NO,37,Alto,T2b-T3,Gleason 7,NO,37,SI,4,,NO,NO,SI,NO,18.17,NO
+Intermedio,50-64 años,56,SI,SI,35.9,Bajo,T1-T2a,Gleason 0-6,SI,4.7,NO,1,Gleason 7,NO,NO,NO,SI,30.33,NO
+Intermedio,50-64 años,62,NO,NO,57.2,Medio,T1-T2a,Gleason 0-6,SI,6.4,NO,4,Gleason 0-6,NO,NO,NO,SI,59.27,NO
+Joven,<50 años,49,NO,NO,47.8,Bajo,T1-T2a,Gleason 0-6,SI,6.6,NO,1,Gleason 0-6,NO,NO,NO,SI,27.07,NO
+Intermedio,50-64 años,59,NO,SI,34.3,Alto,T2b-T3,Gleason 7,NO,4.2,NO,1,Gleason 7,SI,NO,NO,SI,41.29,NO
+Mayor,≥65 años,66,NO,NO,39.2,Alto,T1-T2a,Gleason 0-6,NO,2.1,NO,2,Gleason 7,NO,NO,NO,SI,28.33,NO
+Intermedio,50-64 años,57,NO,NO,34,Medio,T1-T2a,Gleason 7,SI,11.8,NO,1,Gleason 7,NO,NO,NO,SI,47.5,NO
+Intermedio,50-64 años,63,NO,NO,63,Bajo,T1-T2a,Gleason 0-6,SI,6.8,NO,5,Gleason 0-6,NO,NO,NO,SI,18.47,NO
+Mayor,≥65 años,69,NO,SI,62.5,Medio,T1-T2a,Gleason 7,NO,5.86,NO,3,Gleason 7,NO,NO,SI,NO,56.67,NO
+Mayor,≥65 años,65,SI,NO,60.6,Alto,T1-T2a,Gleason 8-10,SI,11.09,NO,2,Gleason 7,NO,NO,NO,SI,35.45,NO
+Mayor,≥65 años,66,NO,NO,260,Alto,T1-T2a,Gleason 7,NO,26.1,NO,2,Gleason 7,NO,NO,SI,NO,0.43,NO
+Mayor,≥65 años,65,NO,NO,27,Medio,T1-T2a,Gleason 0-6,SI,4.9,NO,2,Gleason 7,NO,NO,NO,SI,36.27,NO
+Intermedio,50-64 años,62,NO,NO,,Medio,T1-T2a,Gleason 0-6,SI,5,NO,4,Gleason 0-6,NO,NO,NO,SI,19.23,NO
+Intermedio,50-64 años,56,NO,SI,53.4,Medio,T1-T2a,Gleason 0-6,SI,9.2,NO,3,Gleason 0-6,NO,NO,NO,SI,43.87,NO
+Joven,<50 años,46,NO,NO,42,Medio,T1-T2a,Gleason 0-6,NO,6.7,NO,2,Gleason 7,NO,NO,NO,SI,1.65,NO
+Mayor,≥65 años,71,NO,NO,164,Bajo,T1-T2a,Gleason 7,SI,14.9,NO,2,Gleason 0-6,NO,NO,NO,SI,41.13,NO
+Intermedio,50-64 años,55,NO,NO,35.8,Medio,T1-T2a,Gleason 0-6,SI,4.7,NO,2,Gleason 7,NO,NO,NO,SI,44.93,NO
+Intermedio,50-64 años,55,NO,NO,34.1,Medio,T1-T2a,Gleason 7,SI,11.4,NO,5,Gleason 7,NO,NO,NO,SI,39.27,NO
+Intermedio,50-64 años,56,NO,NO,111,Alto,T2b-T3,Gleason 8-10,NO,8.3,NO,2,Gleason 8-10,NO,NO,SI,NO,1.43,SI
+Mayor,≥65 años,68,NO,SI,53.1,Medio,T1-T2a,Gleason 0-6,SI,6,NO,2,Gleason 7,NO,NO,NO,SI,34.7,NO
+Intermedio,50-64 años,58,SI,NO,85.9,Bajo,T1-T2a,Gleason 0-6,SI,14.2,NO,2,Gleason 0-6,NO,NO,NO,SI,10.73,NO
+Mayor,≥65 años,65,NO,SI,42,Medio,T1-T2a,Gleason 7,SI,9.4,NO,2,Gleason 7,NO,NO,SI,NO,7.6,NO
+Intermedio,50-64 años,56,NO,NO,51,Alto,T1-T2a,Gleason 7,NO,5,NO,2,Gleason 7,NO,NO,NO,SI,47.5,NO
+Mayor,≥65 años,67,NO,NO,62,Bajo,T1-T2a,Gleason 0-6,SI,5.3,SI,4,,NO,NO,NO,SI,23.4,NO
+Intermedio,50-64 años,62,SI,NO,37.9,Medio,,Gleason 7,SI,6.9,NO,1,Gleason 7,NO,NO,NO,SI,1.5,NO
+Intermedio,50-64 años,56,SI,SI,43.8,Alto,T1-T2a,Gleason 7,NO,13,NO,2,Gleason 7,NO,NO,NO,SI,1.43,SI
+Joven,<50 años,44,NO,SI,33.9,Medio,T1-T2a,Gleason 0-6,NO,5.2,NO,1,Gleason 7,NO,NO,NO,SI,44.23,NO
+Joven,<50 años,49,NO,SI,39.6,Bajo,T1-T2a,Gleason 0-6,SI,6.2,NO,4,Gleason 0-6,NO,NO,NO,SI,9.33,NO
+Mayor,≥65 años,68,NO,NO,41.7,Medio,T1-T2a,Gleason 7,NO,6.75,NO,3,Gleason 7,NO,NO,NO,SI,4.73,NO
+Intermedio,50-64 años,60,NO,NO,49.8,Medio,T1-T2a,Gleason 0-6,SI,8.2,NO,1,Gleason 7,NO,NO,NO,SI,35.9,NO
+Mayor,≥65 años,68,NO,NO,34.1,Medio,T1-T2a,Gleason 0-6,NO,5.5,NO,2,Gleason 7,NO,NO,NO,SI,29.89,NO
+Joven,<50 años,47,SI,NO,42.5,Alto,T1-T2a,Gleason 7,SI,14.93,SI,1,,NO,NO,SI,NO,7.47,NO
+Mayor,≥65 años,71,NO,NO,44,Medio,T1-T2a,Gleason 0-6,SI,4.2,NO,2,Gleason 7,NO,NO,NO,SI,44.37,NO
+Mayor,≥65 años,73,NO,SI,78.1,Medio,T1-T2a,Gleason 0-6,NO,5.3,NO,2,Gleason 7,NO,NO,NO,SI,16.5,NO
+Joven,<50 años,47,NO,NO,43,Alto,T1-T2a,Gleason 0-6,SI,8,NO,2,Gleason 0-6,NO,NO,NO,SI,16.87,NO
+Intermedio,50-64 años,64,NO,NO,49.9,Alto,T2b-T3,Gleason 7,NO,10.8,NO,1,Gleason 7,NO,NO,NO,SI,34.7,NO
+Mayor,≥65 años,69,NO,NO,53,Alto,T1-T2a,Gleason 7,NO,7.1,NO,2,Gleason 7,NO,NO,NO,SI,44.88,NO
+Intermedio,50-64 años,52,NO,NO,32.3,Alto,T1-T2a,Gleason 0-6,SI,5.1,NO,2,Gleason 7,NO,NO,NO,SI,23.23,NO
+Intermedio,50-64 años,60,NO,NO,34.6,Medio,T1-T2a,Gleason 0-6,SI,2.81,NO,3,Gleason 7,NO,NO,NO,SI,33.48,NO
+Mayor,≥65 años,68,SI,SI,31.9,Medio,T1-T2a,Gleason 0-6,SI,7,NO,3,Gleason 7,NO,NO,NO,SI,7.77,NO
+Intermedio,50-64 años,64,SI,SI,71.4,Alto,T1-T2a,Gleason 0-6,NO,7,NO,2,Gleason 7,NO,NO,NO,SI,28.99,NO
+Intermedio,50-64 años,64,NO,NO,50.1,Medio,T1-T2a,Gleason 7,NO,4.6,NO,2,Gleason 7,NO,NO,NO,SI,46.87,NO
+Joven,<50 años,42,NO,NO,32,Alto,T1-T2a,Gleason 8-10,NO,14.7,SI,2,,SI,NO,SI,NO,26.69,NO
+Intermedio,50-64 años,56,NO,NO,73,Bajo,T1-T2a,Gleason 0-6,SI,6.2,NO,1,Gleason 0-6,NO,NO,NO,SI,35.93,NO
+Mayor,≥65 años,66,NO,NO,49,Medio,T1-T2a,Gleason 0-6,SI,2.2,NO,2,Gleason 7,NO,NO,NO,SI,35.2,NO
+Intermedio,50-64 años,59,NO,NO,31.2,Alto,T1-T2a,Gleason 7,NO,4.2,NO,2,Gleason 8-10,NO,NO,SI,NO,21,NO
+Joven,<50 años,43,NO,NO,42.7,Alto,T2b-T3,Gleason 8-10,NO,6.88,SI,2,,NO,NO,SI,NO,9.23,SI
+Intermedio,50-64 años,51,NO,NO,43.5,Alto,T2b-T3,Gleason 7,NO,26.2,SI,4,,NO,NO,NO,SI,30.9,NO
+Intermedio,50-64 años,58,NO,SI,121,Medio,T1-T2a,Gleason 0-6,SI,20,NO,3,Gleason 0-6,NO,NO,NO,SI,23.62,NO
+Mayor,≥65 años,75,NO,SI,149.6,Medio,T1-T2a,Gleason 0-6,SI,10.1,NO,2,Gleason 0-6,NO,NO,NO,SI,27.8,NO
+Mayor,≥65 años,72,NO,NO,274,Bajo,T1-T2a,Gleason 8-10,SI,27.74,NO,4,Gleason 0-6,NO,NO,NO,SI,12.17,NO
+Intermedio,50-64 años,61,NO,SI,,Medio,T1-T2a,Gleason 7,SI,6.4,NO,2,Gleason 7,NO,NO,SI,NO,28.59,NO
+Mayor,≥65 años,76,NO,NO,,,,,NO,,NO,3,Gleason 7,NO,NO,SI,NO,25.3,NO
+Intermedio,50-64 años,54,NO,NO,55,Alto,T2b-T3,Gleason 7,NO,13.3,NO,2,Gleason 7,NO,NO,SI,NO,20.97,NO
+Joven,<50 años,44,NO,SI,32.5,Medio,T1-T2a,Gleason 0-6,NO,9.7,NO,2,Gleason 7,NO,NO,NO,SI,32.77,NO
+Intermedio,50-64 años,50,NO,SI,42,Alto,T1-T2a,Gleason 7,SI,4.39,SI,2,,NO,NO,NO,SI,14.03,NO
+Intermedio,50-64 años,60,NO,NO,43,Medio,T1-T2a,Gleason 0-6,SI,4.22,NO,2,Gleason 0-6,NO,NO,NO,SI,22.83,NO
+Joven,<50 años,45,NO,SI,37.1,Medio,T1-T2a,Gleason 0-6,SI,5.84,NO,1,Gleason 7,NO,NO,NO,SI,31.5,NO
+Intermedio,50-64 años,58,NO,NO,27,Alto,T1-T2a,Gleason 0-6,SI,13,NO,2,Gleason 7,NO,NO,NO,SI,17.29,NO
+Intermedio,50-64 años,58,NO,SI,68,Bajo,T1-T2a,Gleason 8-10,SI,5.3,NO,5,Gleason 7,NO,NO,NO,SI,19.13,NO
+Intermedio,50-64 años,58,NO,SI,62,Bajo,T1-T2a,Gleason 0-6,SI,9.45,NO,2,Gleason 0-6,NO,NO,NO,SI,12.3,NO
+Intermedio,50-64 años,62,NO,NO,68,Medio,T1-T2a,Gleason 7,NO,12.2,NO,1,Gleason 7,NO,NO,NO,SI,11.23,NO
+Intermedio,50-64 años,56,NO,NO,43.9,Alto,T1-T2a,Gleason 7,NO,10.1,NO,2,Gleason 7,NO,NO,NO,SI,1.27,NO
+Intermedio,50-64 años,63,NO,SI,54,Alto,T1-T2a,Gleason 0-6,SI,4.9,NO,2,Gleason 7,NO,NO,NO,SI,9.28,NO
+Intermedio,50-64 años,64,NO,SI,48,Medio,T2b-T3,Gleason 7,NO,4.1,NO,1,Gleason 7,NO,NO,NO,SI,4.63,NO
+Mayor,≥65 años,77,NO,NO,,Bajo,T2b-T3,Gleason 0-6,SI,3.37,NO,6,Gleason 0-6,NO,NO,NO,SI,11.73,NO
+Intermedio,50-64 años,55,NO,NO,64.8,Medio,T1-T2a,Gleason 0-6,SI,5.2,NO,4,Gleason 7,NO,NO,NO,SI,1.43,NO
+Joven,<50 años,48,SI,SI,41.9,Medio,T1-T2a,Gleason 7,SI,3,NO,10,Gleason 7,NO,NO,NO,SI,1.3,NO
+Joven,<50 años,49,NO,NO,63,Medio,T1-T2a,Gleason 0-6,SI,3.1,NO,1,Gleason 0-6,NO,NO,NO,SI,3.9,NO
+Intermedio,50-64 años,53,NO,NO,28,Alto,T1-T2a,Gleason 0-6,NO,4.7,NO,2,Gleason 7,NO,NO,NO,SI,10.13,NO
+Intermedio,50-64 años,55,NO,SI,44.5,Alto,T1-T2a,Gleason 0-6,SI,6.8,NO,2,Gleason 7,NO,NO,NO,SI,4.99,NO
+Intermedio,50-64 años,62,NO,NO,43.4,Bajo,T1-T2a,Gleason 0-6,SI,5.8,NO,2,Gleason 0-6,NO,NO,NO,SI,13.53,NO
+Joven,<50 años,46,NO,NO,48.2,Medio,T1-T2a,Gleason 7,SI,4.72,NO,2,Gleason 0-6,NO,NO,NO,SI,1.47,NO
+Intermedio,50-64 años,62,NO,NO,26.5,Medio,,Gleason 0-6,SI,4.3,NO,2,Gleason 0-6,NO,NO,NO,SI,4.1,NO
+Intermedio,50-64 años,63,NO,NO,43,Alto,T1-T2a,Gleason 7,NO,4.98,NO,2,Gleason 7,NO,NO,NO,SI,2.83,NO
+Mayor,≥65 años,68,NO,NO,37.6,Alto,T2b-T3,Gleason 7,NO,4.6,NO,1,Gleason 7,NO,NO,NO,SI,1.7,NO
+Mayor,≥65 años,65,NO,NO,67,Medio,T1-T2a,Gleason 7,NO,9.25,NO,1,Gleason 7,NO,NO,NO,SI,6.6,NO
+Intermedio,50-64 años,51,NO,SI,39,Medio,T2b-T3,Gleason 8-10,SI,5.49,SI,2,,NO,NO,NO,SI,1.93,NO
+Intermedio,50-64 años,63,NO,SI,77,Bajo,T1-T2a,Gleason 0-6,SI,3.92,NO,4,Gleason 0-6,NO,NO,NO,SI,10.43,NO
+Mayor,≥65 años,67,NO,NO,58.2,Medio,,Gleason 0-6,SI,6.3,NO,2,Gleason 7,NO,NO,NO,SI,13.6,NO
+Intermedio,50-64 años,64,NO,NO,67.2,Alto,,Gleason 0-6,NO,7.4,NO,6,Gleason 7,NO,NO,NO,SI,4.83,NO
+Intermedio,50-64 años,57,NO,NO,46.9,Alto,T1-T2a,Gleason 8-10,NO,12,SI,2,,NO,SI,SI,NO,8.4,NO
+Intermedio,50-64 años,59,NO,NO,60,Bajo,T1-T2a,Gleason 0-6,SI,4.5,NO,2,Gleason 0-6,NO,NO,NO,SI,4.17,NO
+Mayor,≥65 años,75,NO,NO,55.1,Alto,T1-T2a,Gleason 7,SI,6.02,NO,3,Gleason 7,NO,NO,NO,SI,2.4,NO
+Intermedio,50-64 años,59,NO,SI,21.2,Bajo,T1-T2a,Gleason 0-6,SI,1.3,NO,2,Gleason 0-6,NO,NO,NO,SI,2.13,NO
+Intermedio,50-64 años,56,NO,NO,73,Alto,T2b-T3,Gleason 8-10,NO,40.1,NO,3,Gleason 8-10,NO,NO,SI,NO,0.3,NO
+Intermedio,50-64 años,63,NO,SI,46.2,Alto,T2b-T3,Gleason 8-10,NO,3.72,NO,2,Gleason 8-10,NO,NO,NO,SI,5.9,NO
+Intermedio,50-64 años,53,SI,NO,47,Alto,T1-T2a,Gleason 7,NO,39,SI,2,,NO,NO,NO,SI,5.63,SI
+Intermedio,50-64 años,58,NO,SI,42,Alto,T1-T2a,Gleason 7,NO,10.7,NO,2,Gleason 8-10,NO,NO,NO,SI,4.4,NO
+Intermedio,50-64 años,54,SI,NO,47.4,Alto,T1-T2a,Gleason 8-10,NO,6.8,NO,2,Gleason 8-10,NO,NO,SI,NO,1.57,NO
+Mayor,≥65 años,67,NO,NO,53,Bajo,T1-T2a,Gleason 0-6,SI,6.1,NO,1,Gleason 0-6,NO,NO,NO,SI,1.87,NO
+Joven,<50 años,38,NO,SI,31.2,Alto,T1-T2a,Gleason 0-6,SI,12.57,NO,2,Gleason 7,NO,NO,NO,SI,8.3,NO
+Mayor,≥65 años,68,NO,SI,63.1,Medio,T1-T2a,Gleason 0-6,SI,4.17,NO,2,Gleason 7,NO,NO,NO,SI,1.23,NO
+Intermedio,50-64 años,60,SI,NO,45.4,Alto,T1-T2a,Gleason 0-6,SI,30.96,NO,2,Gleason 7,NO,NO,NO,SI,1.83,SI
+Intermedio,50-64 años,61,NO,NO,44.9,Alto,T2b-T3,Gleason 8-10,NO,4.3,NO,2,Gleason 8-10,NO,NO,NO,SI,4.33,NO
+Intermedio,50-64 años,54,NO,NO,43,Alto,T1-T2a,Gleason 7,NO,8,NO,2,Gleason 7,NO,NO,NO,SI,1.2,NO
+Intermedio,50-64 años,61,NO,SI,90.7,,T1-T2a,Gleason 0-6,SI,7.9,NO,2,Gleason 0-6,NO,NO,NO,SI,1.2,NO
+Mayor,≥65 años,73,NO,NO,43.8,Medio,T2b-T3,Gleason 8-10,NO,5.9,NO,2,Gleason 8-10,NO,NO,NO,SI,2.03,NO
+Mayor,≥65 años,65,NO,NO,44.3,Medio,T1-T2a,Gleason 7,SI,2.7,SI,4,,NO,NO,NO,SI,3.67,NO
+Intermedio,50-64 años,52,NO,NO,68.3,Alto,T2b-T3,Gleason 8-10,NO,27.15,NO,2,Gleason 8-10,NO,NO,SI,NO,1.73,SI
+Intermedio,50-64 años,55,NO,NO,50.1,Alto,T1-T2a,Gleason 8-10,NO,8.4,NO,2,Gleason 8-10,SI,NO,NO,SI,1.17,NO
+Intermedio,50-64 años,53,NO,SI,29.9,Medio,,Gleason 0-6,SI,4.63,NO,4,Gleason 0-6,NO,NO,NO,SI,1.43,NO
+Mayor,≥65 años,66,NO,NO,51.8,Alto,T1-T2a,Gleason 7,NO,6.74,NO,1,Gleason 7,NO,NO,NO,SI,1.6,NO
+Mayor,≥65 años,66,NO,NO,32.2,Medio,T1-T2a,Gleason 8-10,SI,7.5,NO,2,Gleason 8-10,NO,NO,SI,NO,2.6,NO
+Intermedio,50-64 años,55,SI,NO,68.8,,T1-T2a,Gleason 0-6,SI,11,NO,2,Gleason 0-6,NO,NO,NO,SI,86.37,NO
+Intermedio,50-64 años,56,SI,NO,75.8,Medio,,Gleason 0-6,SI,6.7,NO,1,Gleason 0-6,NO,NO,NO,SI,43.43,NO
+Mayor,≥65 años,67,SI,NO,56.6,Medio,T1-T2a,Gleason 0-6,NO,7.5,NO,2,Gleason 0-6,NO,NO,NO,SI,55.53,NO
+Mayor,≥65 años,65,SI,NO,41.3,Medio,T1-T2a,Gleason 0-6,SI,11,NO,6,Gleason 0-6,NO,NO,SI,NO,3.67,NO
+Mayor,≥65 años,71,SI,NO,42.5,Bajo,T1-T2a,Gleason 7,SI,17,NO,1,Gleason 7,NO,NO,NO,SI,6.43,NO
+Mayor,≥65 años,65,SI,NO,61.5,Medio,T1-T2a,Gleason 0-6,NO,14,NO,2,Gleason 0-6,NO,NO,NO,SI,22.83,NO
+Intermedio,50-64 años,62,SI,NO,57.2,Bajo,T1-T2a,,SI,,SI,4,,NO,NO,SI,NO,21.47,NO
+Intermedio,50-64 años,64,SI,NO,62,Alto,T1-T2a,Gleason 0-6,SI,8.4,NO,2,Gleason 7,NO,NO,SI,NO,15.6,NO
+Intermedio,50-64 años,55,NO,NO,25.6,Medio,T1-T2a,Gleason 0-6,SI,5,NO,1,Gleason 7,NO,NO,NO,SI,76.03,NO
+Intermedio,50-64 años,62,SI,NO,42.3,Medio,T1-T2a,Gleason 0-6,SI,7.6,NO,1,Gleason 0-6,NO,NO,NO,SI,65.3,NO
+Intermedio,50-64 años,62,SI,NO,50,Medio,,Gleason 0-6,NO,9.3,NO,2,Gleason 7,NO,NO,SI,NO,52.3,NO
+Intermedio,50-64 años,58,NO,NO,74.9,Bajo,T1-T2a,Gleason 0-6,SI,4.5,NO,2,Gleason 0-6,NO,NO,NO,SI,26.77,NO
+Intermedio,50-64 años,60,NO,SI,54.1,Alto,T1-T2a,Gleason 0-6,SI,6.8,NO,1,Gleason 7,NO,NO,NO,SI,24.87,NO
